@@ -3,4 +3,7 @@
   justify-content: space-between;
   padding: 23px 15px 23px 21px;
   align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #ffffff;
 }
