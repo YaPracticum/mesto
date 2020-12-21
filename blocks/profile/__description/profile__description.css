@@ -5,7 +5,7 @@
   position: relative;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   .profile__description  {
     margin-bottom: 14px;
   }

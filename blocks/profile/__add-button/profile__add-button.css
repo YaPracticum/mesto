@@ -14,7 +14,13 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
+  .profile__add-button {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
   .profile__add-button  {
     margin: 0 auto;
     background-size: 16px 16px;
