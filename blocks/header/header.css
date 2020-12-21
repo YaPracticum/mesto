@@ -1,0 +1,36 @@
+@import url(__logo/header__logo.css);
+
+.header {
+  display: flex;
+  transition: ease all .5s;
+  align-items: flex-start;
+  min-height: 74px;
+  border-bottom: 1px solid #545454;
+  margin: 45px 0 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    margin: 28px -19px 42px;
+    padding-left: 27px;
+    min-height: 56px;
+  }
+}
+
+/* @media screen and (max-width: 1279px) {
+  .header {
+    margin: 0 48px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+    margin: 0 24px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    margin: 0 16px;
+  }
+} */
