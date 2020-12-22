@@ -9,23 +9,3 @@
   .footer {
     padding: 48px 0 36px;
   }
-
-/* @media screen and (max-width: 1200px) {
-  .footer  {
-    margin: 0 48px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .footer  {
-    margin: 0 24px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .footer {
-    flex-direction: column;
-    margin: 0 0 0 16px;
-    max-width: fit-content;
-  }
-} */

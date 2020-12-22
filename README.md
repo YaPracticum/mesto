@@ -1,17 +1,30 @@
-# Проект 4: Место
+# Проект 4: Mesto
+------
 
-### Обзор
+"Mesto" - это сервис, на куда можно добавлять фотографии, удалять их и ставить лайки. 
+За основу взят макет в Фигме и на его базе сверстан сайт и написана функциональность на JavaScript.
 
-* Figma
-* Картинки
 
-**Figma**
+**Ссылка на проект**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
+* [Ссылка на проект на gh-pages](https://yapracticum.github.io/mesto/)
 
-**Картинки**
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+### Использованные технологии:
 
-Удачи!
+* [HTML] (https://www.w3schools.com/html/)
+* [CSS] (https://www.w3schools.com/css/)
+* [CSS Flexbox] (https://www.w3schools.com/css/css3_flexbox.asp)
+* [CSS Grid Layout] (https://www.w3schools.com/css/css_grid.asp)
+* [JavaScript] (https://www.w3schools.com/js/DEFAULT.asp)
+* [БЭМ] (https://ru.bem.info/)
+* [GIT] (https://git-scm.com/)
+* [Оптимизатор картинок](https://tinypng.com/)
+
+
+## Планы по доработке проекта
+------
+
+* Добавить функционал для добавления, удаления фотографий
+* Доработать скрипт редактирования профиля
+* Добавить функционал для лайков
