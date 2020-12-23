@@ -15,59 +15,59 @@
 
     <main>
       <section class="profile">
-        <div class="profile__avatar"><img src="./images/avatar.svg" alt="Жак Кусто"></div>
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Жак Кусто">
         <div class="profile__info">
           <div class="profile__description">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Edit"></button>
           </div>
           <p class="profile__role">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button class="profile__add-button" type="button" aria-label="Add"></button>
       </section>
 
-      <section>
+      <section class="gallery">
         <ul class="cards">
           <li class="card">
             <img src="./images/photo-karachevsk.png" class="card__image" alt="Карачаевск">
             <div class="card__footer">
               <h2 class="card__title">Карачаевск</h2>
-              <button class="card__like-button" type="button"></button>
+              <button class="card__like-button" type="button" aria-label="Like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/photo-elbrus.png" class="card__image" alt="Гора Эльбрус">
             <div class="card__footer">
               <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__like-button" type="button"></button>
+              <button class="card__like-button" type="button" aria-label="Like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/photo-dombai.png" class="card__image" alt="Домбай">
             <div class="card__footer">
               <h2 class="card__title">Домбай</h2>
-              <button class="card__like-button" type="button"></button>
+              <button class="card__like-button" type="button" aria-label="Like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/photo-elbrus.png" class="card__image" alt="Гора Эльбрус">
             <div class="card__footer">
               <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__like-button" type="button"></button>
+              <button class="card__like-button" type="button" aria-label="Like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/photo-dombai.png" class="card__image" alt="Домбай">
             <div class="card__footer">
               <h2 class="card__title">Домбай</h2>
-              <button class="card__like-button" type="button"></button>
+              <button class="card__like-button" type="button" aria-label="Like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/photo-karachevsk.png" class="card__image" alt="Карачаево-Черкессия">
             <div class="card__footer">
               <h2 class="card__title">Карачаево-Черкессия</h2>
-              <button class="card__like-button" type="button"></button>
+              <button class="card__like-button" type="button" aria-label="Like"></button>
             </div>
           </li>
         </ul>
@@ -79,15 +79,17 @@
     </footer>
 
     <div class="popup">
-      <form class="popup__container">
-        <button class="popup__close-button" type="button"></button>
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Close"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" class="popup__input popup__input_name">
-        <input type="text" class="popup__input popup__input_role">
-        <button class="popup__submit-button" type="submit">
-          Сохранить
-        </button>
+        <form name="profileForm">
+          <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_name">
+          <input type="text" name="role" placeholder="Профессия" class="popup__input popup__input_role">
+          <button class="popup__submit-button" type="submit" aria-label="Submit">
+            Сохранить
+          </button>
       </form>
+    </div>
     </div>
 
   </div>

@@ -2,8 +2,8 @@
   background-image: url(../../../images/like-button.svg);
   background-repeat: no-repeat;
   background-position: center;
-  width: 20px;
-  height: 18px;
+  min-width: 20px;
+  min-height: 18px;
   background-size: contain;
   background-color: #ffffff;
   margin-right: 21px;
