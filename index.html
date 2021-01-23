@@ -36,15 +36,31 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <!-- Попап редактирования профиля -->
+    <div class="popup" id="popup_edit-profile">
       <div class="popup__container">
-        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <button class="popup__close-button" id="popup_edit-profile_close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form name="profileForm">
           <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_name">
           <input type="text" name="role" placeholder="Профессия" class="popup__input popup__input_role">
           <button class="popup__submit-button" type="submit" aria-label="Сохранить">
             Сохранить
+          </button>
+      </form>
+    </div>
+    </div>
+
+    <!-- Попап добавления карточки -->
+    <div class="popup" id="popup_add-card">
+      <div class="popup__container">
+        <button class="popup__close-button" id="popup_add-card_close-button" type="button" aria-label="Закрыть"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form name="profileForm">
+          <input type="text" name="title" placeholder="Название" class="popup__input popup__input_title">
+          <input type="url" name="imageLink" placeholder="Ссылка на картинку" class="popup__input popup__input_imageLink">
+          <button class="popup__submit-button" type="submit" aria-label="Создать">
+            Создать
           </button>
       </form>
     </div>

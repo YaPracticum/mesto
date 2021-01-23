@@ -1,3 +1,21 @@
+let popupEditProfile = document.querySelector('#popup_edit-profile');
+let popupAddCard = document.querySelector('#popup_add-card');
+let popupEditProfileCloseButton = document.querySelector('#popup_edit-profile_close-button');
+let popupAddCardCloseButton = document.querySelector('#popup_add-card_close-button');
+let profileEditButton = document.querySelector('.profile__edit-button');
+let profileAddButton = document.querySelector('.profile__add-button');
+let formEditProfileElement = document.querySelector('#popup_edit-profile');
+let formAddCardElement = document.querySelector('#popup_edit-profile');
+let inputName = document.querySelector('.popup__input_name');
+let inputRole = document.querySelector('.popup__input_role');
+let profileName = document.querySelector('.profile__name');
+let profileRole = document.querySelector('.profile__role');
+
+// let inputTitle = document.querySelector('.popup__input_title');
+// let inputImageLink = document.querySelector('.popup__input_imageLink');
+// let cardTitle = document.querySelector('.card__title');
+// let cardImageLink = document.querySelector('.card__image');
+
 const initialCards = [
   {
     title: 'Архыз',
@@ -24,58 +42,63 @@ const initialCards = [
     imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-let popupWindow = document.querySelector('.popup');
-let formElement = document.querySelector('.popup__container');
-let profileEditButton = document.querySelector('.profile__edit-button');
-let popupCloseButton = document.querySelector('.popup__close-button');
-let inputName = document.querySelector('.popup__input_name');
-let inputRole = document.querySelector('.popup__input_role');
-let profileName = document.querySelector('.profile__name');
-let profileRole = document.querySelector('.profile__role');
 const cardsList = document.querySelector('.cards');
+const cardTemplate = document.querySelector('#card-template').content;
 
-function openPopup() {
-  popupWindow.classList.add('popup_opened');
+// Попап редактирования профиля
+function openEditProfilePopup() {
+  popupEditProfile.classList.add('popup_opened');
   inputName.value = profileName.textContent;
   inputRole.value = profileRole.textContent;
 }
 
-function closePopup() {
-  popupWindow.classList.remove('popup_opened');
+function closeEditProfilePopup() {
+  popupEditProfile.classList.remove('popup_opened');
 }
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-function handleFormSubmit (evt) {
+// Попап добавления карточки
+function openAddCardPopup() {
+  popupAddCard.classList.add('popup_opened');
+  // inputTitle.value = cardTitle.textContent;
+  // inputImageLink.value = cardImageLink.textContent;
+}
+
+function closeAddCardPopup() {
+  popupAddCard.classList.remove('popup_opened');
+}
+
+// Обработчик «отправки» формы редактирования профиля
+function handleEditProfileFormSubmit (evt) {
   evt.preventDefault(); 
 
   profileName.textContent = inputName.value;
   profileRole.textContent = inputRole.value;
-  closePopup()
-
+  closeEditProfilePopup()
 }
 
-// Функция построения элемента карточки
-function addCard (title, imageLink) {
-  const cardTemplate = document.querySelector('#card-template').content;
+// Обработчик «отправки» формы добавления карточки
+function handleAddCardFormSubmit (evt) {
+  evt.preventDefault(); 
+
+  profileName.textContent = inputName.value;
+  profileRole.textContent = inputRole.value;
+  closeAddCardPopup()
+}
+
+// Отображаем карточки на странице
+initialCards.forEach(function (element) {
   const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector('.card__image').src = imageLink;
-  cardElement.querySelector('.card__image').alt = title;
-  cardElement.querySelector('.card__title').textContent = title;
-  cardsList.append(cardElement);
-}
+  
+  cardElement.querySelector('.card__image').src = element.imageLink;
+  cardElement.querySelector('.card__image').alt = element.title;
+  cardElement.querySelector('.card__title').textContent = element.title;
 
-// Функция вывода карточек на страницу
-function displayCards(cards) {
-  cards.forEach(item => {
-    addCard (item.title, item.imageLink);
-  });
-}
+  cardsList.append(cardElement)
+});
 
-profileEditButton.addEventListener('click', openPopup);
-popupCloseButton.addEventListener('click', closePopup);
-formElement.addEventListener('submit', handleFormSubmit);
-
-displayCards(initialCards);
-
+profileEditButton.addEventListener('click', openEditProfilePopup);
+popupEditProfileCloseButton.addEventListener('click', closeEditProfilePopup);
+profileAddButton.addEventListener('click', openAddCardPopup);
+popupAddCardCloseButton.addEventListener('click', closeAddCardPopup);
+formEditProfileElement.addEventListener('submit', handleEditProfileFormSubmit);
+formAddCardElement.addEventListener('submit', handleAddCardFormSubmit);
