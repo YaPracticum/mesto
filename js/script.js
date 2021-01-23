@@ -1,3 +1,30 @@
+const initialCards = [
+  {
+    title: 'Архыз',
+    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    title: 'Челябинская область',
+    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    title: 'Иваново',
+    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    title: 'Камчатка',
+    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    title: 'Холмогорский район',
+    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    title: 'Байкал',
+    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
 let popupWindow = document.querySelector('.popup');
 let formElement = document.querySelector('.popup__container');
 let profileEditButton = document.querySelector('.profile__edit-button');
@@ -6,6 +33,7 @@ let inputName = document.querySelector('.popup__input_name');
 let inputRole = document.querySelector('.popup__input_role');
 let profileName = document.querySelector('.profile__name');
 let profileRole = document.querySelector('.profile__role');
+const cardsList = document.querySelector('.cards');
 
 function openPopup() {
   popupWindow.classList.add('popup_opened');
@@ -20,26 +48,34 @@ function closePopup() {
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleFormSubmit (evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                      // Так мы можем определить свою логику отправки.
-                      // О том, как это делать, расскажем позже.
+  evt.preventDefault(); 
 
-  // Находим поля формы в DOM
-  // let nameInput = // Воспользуйтесь инструментом .querySelector()
-  // let jobInput = // Воспользуйтесь инструментом .querySelector()
-
-  // Получите значение полей из свойства value
   profileName.textContent = inputName.value;
   profileRole.textContent = inputRole.value;
-  closePopup();
+  closePopup()
 
-  // Выберите элементы, куда должны быть вставлены значения полей
+}
 
+// Функция построения элемента карточки
+function addCard (title, imageLink) {
+  const cardTemplate = document.querySelector('#card-template').content;
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector('.card__image').src = imageLink;
+  cardElement.querySelector('.card__image').alt = title;
+  cardElement.querySelector('.card__title').textContent = title;
+  cardsList.append(cardElement);
+}
 
-  // Вставьте новые значения с помощью textContent
-
+// Функция вывода карточек на страницу
+function displayCards(cards) {
+  cards.forEach(item => {
+    addCard (item.title, item.imageLink);
+  });
 }
 
 profileEditButton.addEventListener('click', openPopup);
 popupCloseButton.addEventListener('click', closePopup);
 formElement.addEventListener('submit', handleFormSubmit);
+
+displayCards(initialCards);
+
