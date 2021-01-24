@@ -42,7 +42,8 @@ const initialCards = [
     imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-const cardsList = document.querySelector('.cards');
+let cardsList = document.querySelector('.cards');
+let trashButton = document.querySelector('.card__trash-button');
 
 
 // Попап редактирования профиля
@@ -101,6 +102,13 @@ function addCardElement(title, imageLink) {
 initialCards.forEach(function(elem) {
   addCardElement(elem.title, elem.imageLink);
 });
+
+
+// Удаление карточки
+trashButton.addEventListener('click', function () {
+  const cardItem = trashButton.closest('card');
+  cardItem.remove();
+}); 
 
 profileEditButton.addEventListener('click', openEditProfilePopup);
 popupEditProfileCloseButton.addEventListener('click', closeEditProfilePopup);
