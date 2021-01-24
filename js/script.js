@@ -5,16 +5,16 @@ let popupAddCardCloseButton = document.querySelector('#popup_add-card_close-butt
 let profileEditButton = document.querySelector('.profile__edit-button');
 let profileAddButton = document.querySelector('.profile__add-button');
 let formEditProfileElement = document.querySelector('#popup_edit-profile');
-let formAddCardElement = document.querySelector('#popup_edit-profile');
+let formAddCardElement = document.querySelector('#popup_add-card');
 let inputName = document.querySelector('.popup__input_name');
 let inputRole = document.querySelector('.popup__input_role');
 let profileName = document.querySelector('.profile__name');
 let profileRole = document.querySelector('.profile__role');
 
-// let inputTitle = document.querySelector('.popup__input_title');
-// let inputImageLink = document.querySelector('.popup__input_imageLink');
-// let cardTitle = document.querySelector('.card__title');
-// let cardImageLink = document.querySelector('.card__image');
+let inputTitle = document.querySelector('.popup__input_title');
+let inputImageLink = document.querySelector('.popup__input_imageLink');
+let cardTitle = document.querySelector('.card__title');
+let cardImageLink = document.querySelector('.card__image');
 
 const initialCards = [
   {
@@ -43,7 +43,7 @@ const initialCards = [
   }
 ];
 const cardsList = document.querySelector('.cards');
-const cardTemplate = document.querySelector('#card-template').content;
+
 
 // Попап редактирования профиля
 function openEditProfilePopup() {
@@ -59,8 +59,6 @@ function closeEditProfilePopup() {
 // Попап добавления карточки
 function openAddCardPopup() {
   popupAddCard.classList.add('popup_opened');
-  // inputTitle.value = cardTitle.textContent;
-  // inputImageLink.value = cardImageLink.textContent;
 }
 
 function closeAddCardPopup() {
@@ -73,27 +71,31 @@ function handleEditProfileFormSubmit (evt) {
 
   profileName.textContent = inputName.value;
   profileRole.textContent = inputRole.value;
-  closeEditProfilePopup()
+  closeEditProfilePopup();
 }
 
 // Обработчик «отправки» формы добавления карточки
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
 
-  profileName.textContent = inputName.value;
-  profileRole.textContent = inputRole.value;
+  addCardElement(inputTitle.value, inputImageLink.value);
   closeAddCardPopup()
 }
 
-// Отображаем карточки на странице
-initialCards.forEach(function (element) {
+// Создание карточки
+function addCardElement(title, imageLink) {
+  const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.cloneNode(true);
-  
-  cardElement.querySelector('.card__image').src = element.imageLink;
-  cardElement.querySelector('.card__image').alt = element.title;
-  cardElement.querySelector('.card__title').textContent = element.title;
 
-  cardsList.append(cardElement)
+  cardElement.querySelector('.card__image').src = imageLink;
+  cardElement.querySelector('.card__image').alt = title;
+  cardElement.querySelector('.card__title').textContent = title;
+  cardsList.prepend(cardElement);
+}
+
+// Вывод заданного массива карточек на страницу
+initialCards.forEach(function(elem) {
+  addCardElement(elem.title, elem.imageLink);
 });
 
 profileEditButton.addEventListener('click', openEditProfilePopup);

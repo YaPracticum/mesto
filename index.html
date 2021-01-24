@@ -59,7 +59,7 @@
         <form name="profileForm">
           <input type="text" name="title" placeholder="Название" class="popup__input popup__input_title">
           <input type="url" name="imageLink" placeholder="Ссылка на картинку" class="popup__input popup__input_imageLink">
-          <button class="popup__submit-button" type="submit" aria-label="Создать">
+          <button class="popup__submit-button" id="add-card-button" type="submit" aria-label="Создать">
             Создать
           </button>
       </form>
@@ -70,7 +70,7 @@
 
   <template id="card-template">
     <li class="card">
-      <img src="" class="card__image" alt="">
+      <img src="" class="card__image">
       <div class="card__footer">
         <h2 class="card__title"></h2>
         <button class="card__like-button" type="button" aria-label="Нравится"></button>
