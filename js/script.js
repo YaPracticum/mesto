@@ -90,6 +90,10 @@ function addCardElement(title, imageLink) {
   cardElement.querySelector('.card__image').src = imageLink;
   cardElement.querySelector('.card__image').alt = title;
   cardElement.querySelector('.card__title').textContent = title;
+  cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like-button_active');
+  });
+
   cardsList.prepend(cardElement);
 }
 
