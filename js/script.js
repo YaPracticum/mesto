@@ -39,8 +39,8 @@ const initialCards = [
     imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-let cardsList = document.querySelector('.cards');
-let trashButton = document.querySelector('.card__trash-button');
+const cardsList = document.querySelector('.cards');
+const trashButton = document.querySelector('.card__trash-button');
 
 
 // Попап редактирования профиля
