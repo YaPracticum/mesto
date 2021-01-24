@@ -10,11 +10,8 @@ let inputName = document.querySelector('.popup__input_name');
 let inputRole = document.querySelector('.popup__input_role');
 let profileName = document.querySelector('.profile__name');
 let profileRole = document.querySelector('.profile__role');
-
 let inputTitle = document.querySelector('.popup__input_title');
 let inputImageLink = document.querySelector('.popup__input_imageLink');
-let cardTitle = document.querySelector('.card__title');
-let cardImageLink = document.querySelector('.card__image');
 
 const initialCards = [
   {
@@ -94,6 +91,9 @@ function addCardElement(title, imageLink) {
   cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__like-button_active');
   });
+  cardElement.querySelector('.card__trash-button').addEventListener('click', function (evt) {
+    evt.target.closest('.card').remove();
+  });
 
   cardsList.prepend(cardElement);
 }
@@ -102,13 +102,6 @@ function addCardElement(title, imageLink) {
 initialCards.forEach(function(elem) {
   addCardElement(elem.title, elem.imageLink);
 });
-
-
-// Удаление карточки
-trashButton.addEventListener('click', function () {
-  const cardItem = trashButton.closest('card');
-  cardItem.remove();
-}); 
 
 profileEditButton.addEventListener('click', openEditProfilePopup);
 popupEditProfileCloseButton.addEventListener('click', closeEditProfilePopup);
