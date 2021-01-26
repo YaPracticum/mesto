@@ -70,6 +70,7 @@ function openPopupImage(evt) {
   const eventTarget = evt.target;
   popupWindowLargeImage.classList.add('popup_opened');
   popupImage.src = eventTarget.src;
+  popupImage.alt = eventTarget.alt;
   const cardTitle = eventTarget.closest('.card');
   popupTitle.textContent = cardTitle.querySelector('.card__title').textContent;
 };
