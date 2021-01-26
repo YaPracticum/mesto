@@ -1,64 +1,48 @@
-let popupEditProfile = document.querySelector('#popup_edit-profile');
-let popupEditProfileCloseButton = document.querySelector('#popup_edit-profile_close-button');
-let formEditProfileElement = document.querySelector('#popup_edit-profile');
+const popupEditProfile = document.querySelector('#popup_edit-profile');
+const popupEditProfileCloseButton = document.querySelector('#popup_edit-profile_close-button');
+const formEditProfileElement = document.querySelector('#popup_edit-profile');
 
-let popupAddCard = document.querySelector('#popup_add-card');
-let popupAddCardCloseButton = document.querySelector('#popup_add-card_close-button');
-let formAddCardElement = document.querySelector('#popup_add-card');
+const popupAddCard = document.querySelector('#popup_add-card');
+const popupAddCardCloseButton = document.querySelector('#popup_add-card_close-button');
+const formAddCardElement = document.querySelector('#popup_add-card');
 
-let profileEditButton = document.querySelector('.profile__edit-button');
-let profileAddButton = document.querySelector('.profile__add-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const profileAddButton = document.querySelector('.profile__add-button');
 
-let inputName = document.querySelector('.popup__input_name');
-let inputRole = document.querySelector('.popup__input_role');
-let profileName = document.querySelector('.profile__name');
-let profileRole = document.querySelector('.profile__role');
-let inputTitle = document.querySelector('.popup__input_title');
-let inputImageLink = document.querySelector('.popup__input_imageLink');
+const inputName = document.querySelector('.popup__input_name');
+const inputRole = document.querySelector('.popup__input_role');
+const profileName = document.querySelector('.profile__name');
+const profileRole = document.querySelector('.profile__role');
+const inputTitle = document.querySelector('.popup__input_title');
+const inputImageLink = document.querySelector('.popup__input_imageLink');
 
-let popupWindowLargeImage = document.querySelector('#popup_large-image');
-let popupImage = document.querySelector('.popup__image');
-let popupTitle = document.querySelector('.popup__title-image');
-let popupImageCloseButton = document.querySelector('#popup_large-image_close-button');
+const popupWindowLargeImage = document.querySelector('#popup_large-image');
+const popupImage = document.querySelector('.popup__image');
+const popupTitle = document.querySelector('.popup__title-image');
+const popupImageCloseButton = document.querySelector('#popup_large-image_close-button');
 
-const initialCards = [
-  {
-    title: 'Архыз',
-    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    title: 'Челябинская область',
-    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    title: 'Иваново',
-    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    title: 'Камчатка',
-    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    title: 'Холмогорский район',
-    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    title: 'Байкал',
-    imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 const cardsList = document.querySelector('.cards');
 const trashButton = document.querySelector('.card__trash-button');
 
+
+function openPopup(open) {
+  open.classList.add('popup_opened');
+}
+
+function closePopup(close) {
+  close.classList.remove('popup_opened');
+}
+
+
 // Попап редактирования профиля
 function openEditProfilePopup() {
-  popupEditProfile.classList.add('popup_opened');
+  openPopup(popupEditProfile);
   inputName.value = profileName.textContent;
   inputRole.value = profileRole.textContent;
 }
 
 function closeEditProfilePopup() {
-  popupEditProfile.classList.remove('popup_opened');
+    closePopup(popupEditProfile);
 }
 
 // Обработчик «отправки» формы редактирования профиля
@@ -67,18 +51,18 @@ function handleEditProfileFormSubmit (evt) {
 
   profileName.textContent = inputName.value;
   profileRole.textContent = inputRole.value;
-  closeEditProfilePopup();
+  closePopup(popupEditProfile);
 }
 
 // Попап добавления карточки
 function openAddCardPopup() {
-  popupAddCard.classList.add('popup_opened');
+  openPopup(popupAddCard);
   inputTitle.value = '';
   inputImageLink.value = '';
 }
 
 function closeAddCardPopup() {
-  popupAddCard.classList.remove('popup_opened');
+  closePopup(popupAddCard);
 }
 
 //Попап увеличения картинки
@@ -91,7 +75,8 @@ function openPopupImage(evt) {
 };
 
 function closePopupImage() {
-  popupWindowLargeImage.classList.remove('popup_opened');
+  closePopup(popupWindowLargeImage);
+
 }
 
 // Создание карточки
@@ -118,7 +103,7 @@ function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
 
   addCardElement(inputTitle.value, inputImageLink.value, 'preppend');
-  closeAddCardPopup()
+  closeAddCardPopup();
 }
 
 // Вывод заданного массива карточек на страницу
