@@ -23,6 +23,8 @@ const popupImageCloseButton = document.querySelector('#popup_large-image_close-b
 
 const cardsList = document.querySelector('.cards');
 const trashButton = document.querySelector('.card__trash-button');
+const cardTemplate = document.querySelector('#card-template').content;
+
 
 
 function openPopup(open) {
@@ -32,7 +34,6 @@ function openPopup(open) {
 function closePopup(close) {
   close.classList.remove('popup_opened');
 }
-
 
 // Попап редактирования профиля
 function openEditProfilePopup() {
@@ -77,18 +78,17 @@ function openPopupImage(evt) {
 
 function closePopupImage() {
   closePopup(popupWindowLargeImage);
-
 }
 
 // Создание карточки
 function addCardElement(title, imageLink, order) {
-  const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector('.card__image');
 
-  cardElement.querySelector('.card__image').src = imageLink;
-  cardElement.querySelector('.card__image').alt = title;
+  cardImage.src = imageLink;
+  cardImage.alt = title;
+  cardImage.addEventListener('click', openPopupImage);
   cardElement.querySelector('.card__title').textContent = title;
-  cardElement.querySelector('.card__image').addEventListener('click', openPopupImage);
   cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__like-button_active');
   });
