@@ -79,7 +79,7 @@ function closePopupImage() {
 }
 
 // Создание карточки
-function addCardElement(title, imageLink) {
+function createCardElement(title, imageLink) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
   cardImage.src = imageLink;
@@ -98,14 +98,14 @@ function addCardElement(title, imageLink) {
 // Обработчик «отправки» формы добавления карточки
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
-  const card = addCardElement(inputTitle.value, inputImageLink.value);
+  const card = createCardElement(inputTitle.value, inputImageLink.value);
   cardsList.prepend(card);
   closeAddCardPopup();
 }
 
 // Вывод заданного массива карточек на страницу
 initialCards.forEach(function(elem) {
-  const card = addCardElement(elem.title, elem.imageLink);
+  const card = createCardElement(elem.title, elem.imageLink);
   cardsList.append(card); 
 });
 
