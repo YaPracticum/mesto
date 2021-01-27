@@ -26,7 +26,6 @@ const trashButton = document.querySelector('.card__trash-button');
 const cardTemplate = document.querySelector('#card-template').content;
 
 
-
 function openPopup(open) {
   open.classList.add('popup_opened');
 }
@@ -49,7 +48,6 @@ function closeEditProfilePopup() {
 // Обработчик «отправки» формы редактирования профиля
 function handleEditProfileFormSubmit (evt) {
   evt.preventDefault(); 
-
   profileName.textContent = inputName.value;
   profileRole.textContent = inputRole.value;
   closePopup(popupEditProfile);
@@ -80,13 +78,10 @@ function closePopupImage() {
   closePopup(popupWindowLargeImage);
 }
 
-
-
 // Создание карточки
 function addCardElement(title, imageLink) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
-
   cardImage.src = imageLink;
   cardImage.alt = title;
   cardImage.addEventListener('click', openPopupImage);
