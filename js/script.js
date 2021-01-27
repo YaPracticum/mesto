@@ -95,18 +95,22 @@ function createCardElement(title, imageLink) {
   return cardElement;
 }
 
+function addCard(card, order){
+  order === 'prepend' ? cardsList.prepend(card) : cardsList.append(card);
+}
+
 // Обработчик «отправки» формы добавления карточки
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
   const card = createCardElement(inputTitle.value, inputImageLink.value);
-  cardsList.prepend(card);
+  addCard(card, 'prepend');
   closeAddCardPopup();
 }
 
 // Вывод заданного массива карточек на страницу
 initialCards.forEach(function(elem) {
   const card = createCardElement(elem.title, elem.imageLink);
-  cardsList.append(card); 
+  addCard(card, 'append');
 });
 
 profileEditButton.addEventListener('click', openEditProfilePopup);
