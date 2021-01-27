@@ -80,8 +80,10 @@ function closePopupImage() {
   closePopup(popupWindowLargeImage);
 }
 
+
+
 // Создание карточки
-function addCardElement(title, imageLink, order) {
+function addCardElement(title, imageLink) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.card__image');
 
@@ -95,21 +97,21 @@ function addCardElement(title, imageLink, order) {
   cardElement.querySelector('.card__trash-button').addEventListener('click', function (evt) {
     evt.target.closest('.card').remove();
   });
-
-  order === 'preppend' ? cardsList.prepend(cardElement) : cardsList.append(cardElement);
+  return cardElement;
 }
 
 // Обработчик «отправки» формы добавления карточки
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
-
-  addCardElement(inputTitle.value, inputImageLink.value, 'preppend');
+  let card = addCardElement(inputTitle.value, inputImageLink.value);
+  cardsList.prepend(card);
   closeAddCardPopup();
 }
 
 // Вывод заданного массива карточек на страницу
 initialCards.forEach(function(elem) {
-  addCardElement(elem.title, elem.imageLink);
+  let card = addCardElement(elem.title, elem.imageLink);
+  cardsList.append(card); 
 });
 
 profileEditButton.addEventListener('click', openEditProfilePopup);
