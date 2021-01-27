@@ -103,14 +103,14 @@ function addCardElement(title, imageLink) {
 // Обработчик «отправки» формы добавления карточки
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
-  let card = addCardElement(inputTitle.value, inputImageLink.value);
+  const card = addCardElement(inputTitle.value, inputImageLink.value);
   cardsList.prepend(card);
   closeAddCardPopup();
 }
 
 // Вывод заданного массива карточек на страницу
 initialCards.forEach(function(elem) {
-  let card = addCardElement(elem.title, elem.imageLink);
+  const card = addCardElement(elem.title, elem.imageLink);
   cardsList.append(card); 
 });
 
