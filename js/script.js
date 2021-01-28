@@ -26,12 +26,12 @@ const trashButton = document.querySelector('.card__trash-button');
 const cardTemplate = document.querySelector('#card-template').content;
 
 
-function openPopup(open) {
-  open.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
-function closePopup(close) {
-  close.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 // Попап редактирования профиля
@@ -67,7 +67,7 @@ function closeAddCardPopup() {
 //Попап увеличения картинки
 function openPopupImage(evt) {
   const eventTarget = evt.target;
-  popupWindowLargeImage.classList.add('popup_opened');
+  openPopup(popupWindowLargeImage);
   popupImage.src = eventTarget.src;
   popupImage.alt = eventTarget.alt;
   const cardTitle = eventTarget.closest('.card');
