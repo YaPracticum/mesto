@@ -41,14 +41,14 @@
       <div class="popup__container">
         <button class="popup__close-button" id="popup_edit-profile_close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form name="profileForm">
+        <form name="profileForm" class="popup__form" novalidate>
           <label class="popup__label">
-            <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_name">
-            <span class="name-input-error popup__input-error">Необходимо заполнить данное поле</span>
+            <input id="name-input" type="text" name="name" placeholder="Имя" class="popup__input popup__input_name" required minlength="2" maxlength="40">
+            <span class="name-input-error popup__input-error"></span>
           </label>
           <label class="popup__label">
-            <input type="text" name="role" placeholder="Профессия" class="popup__input popup__input_role">
-            <span class="role-input-error popup__input-error">Необходимо заполнить данное поле</span>
+            <input id="role-input" type="text" name="role" placeholder="Профессия" class="popup__input popup__input_role" required minlength="2" maxlength="200">
+            <span class="role-input-error popup__input-error"></span>
           </label>
           <button class="popup__submit-button" type="submit" aria-label="Сохранить">
             Сохранить
@@ -62,14 +62,14 @@
       <div class="popup__container">
         <button class="popup__close-button" id="popup_add-card_close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form name="addCardForm">
+        <form name="addCardForm" class="popup__form" novalidate>
           <label class="popup__label">
-            <input type="text" name="title" placeholder="Название" class="popup__input popup__input_title">
-            <span class="title-input-error popup__input-error">Необходимо заполнить данное поле</span>
+            <input id="title-input" type="text" name="title" placeholder="Название" class="popup__input popup__input_title">
+            <span class="title-input-error popup__input-error"></span>
           </label>
           <label class="popup__label">
-            <input type="url" name="imageLink" placeholder="Ссылка на картинку" class="popup__input popup__input_imageLink">
-            <span class="imageLink-input-error popup__input-error">Необходимо заполнить данное поле</span>
+            <input id="imageLink-input" type="url" name="imageLink" placeholder="Ссылка на картинку" class="popup__input popup__input_imageLink">
+            <span class="imageLink-input-error popup__input-error"></span>
           </label>
           <button class="popup__submit-button" id="add-card-button" type="submit" aria-label="Создать">
             Создать
@@ -103,6 +103,7 @@
   
   <script src="js/initial-сards.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/validate.js"></script>
   
 </body>
 </html>
