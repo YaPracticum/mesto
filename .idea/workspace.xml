@@ -25,9 +25,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aba2caa9-c026-4f07-83a8-045a467dc563" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__input/popup__input-error.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__input/popup__input-error.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button_inactive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/validate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +61,13 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blocks/popup/__input" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blocks/popup/__submit-button" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/blocks/popup/__submit-button" />
       <recent name="$PROJECT_DIR$/blocks/popup/__input" />
     </key>
   </component>
@@ -76,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1612373453759</updated>
       <workItem from="1612373455032" duration="7327000" />
-      <workItem from="1612448306668" duration="5197000" />
+      <workItem from="1612448306668" duration="8627000" />
     </task>
     <servers />
   </component>
