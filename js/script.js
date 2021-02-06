@@ -115,37 +115,12 @@ initialCards.forEach(function(elem) {
 
 // Закрытие popup на ESC
 window.addEventListener('keyup', function (evt) {
-  if ((evt.keyCode === 27)) {
+  if ((evt.key === 'Escape')) {
     closePopup(popupEditProfile);
     closePopup(popupAddCard);
     closePopup(popupWindowLargeImage);
   };
 });
-
-
-
-// const popupOverlay = document.querySelector('.popup');
-
-// function closePopupOverlay() {
-//   if (popupAddCard.classList.contains('popup_opened')) {
-//     closePopup(popupAddCard);
-//   } else if (popupEditProfile.classList.contains('popup_opened')) {
-//     closePopup(popupEditProfile);
-//   }
-//   }
-
-// popupOverlay.addEventListener('click', closePopupImage);
-
-
-
-// const popupOverlay = document.querySelector('.popup');
-// function closePopupOverlay() {
-//     closeEditProfilePopup();
-//     closePopupImage()
-//     closePopup(popupWindowLargeImage);
-// }
-// popupOverlay.addEventListener('click', closePopupOverlay);
-
 
 
 profileEditButton.addEventListener('click', openEditProfilePopup);
