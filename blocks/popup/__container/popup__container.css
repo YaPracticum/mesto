@@ -11,6 +11,7 @@
   width: 100%;
   box-sizing: border-box;
   margin: 0 19px;
+  cursor: default;
 }
 
 @media screen and (max-width: 500px) {

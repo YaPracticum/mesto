@@ -1,3 +1,4 @@
+
 const popupEditProfile = document.querySelector('#popup_edit-profile');
 const popupEditProfileCloseButton = document.querySelector('#popup_edit-profile_close-button');
 const formEditProfileElement = document.querySelector('#popup_edit-profile');
@@ -24,19 +25,35 @@ const popupImageCloseButton = document.querySelector('#popup_large-image_close-b
 const cardsList = document.querySelector('.cards');
 const trashButton = document.querySelector('.card__trash-button');
 const cardTemplate = document.querySelector('#card-template').content;
+let currentPopup;
 
-
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
+function removeClosePopupListeners(currentPopup) {
+  currentPopup.removeEventListener("mousedown", closePopupClick); 
+  window.removeEventListener("keyup", closePopupEscape); 
+} 
+ 
+function addClosePopupListeners(currentPopup) { 
+  currentPopup.addEventListener("mousedown", closePopupClick); 
+  window.addEventListener("keyup", closePopupEscape); 
 }
 
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+function openPopup(currentPopup) {
+  currentPopup.classList.add('popup_opened');
+  addClosePopupListeners(currentPopup);
+  if (currentPopup !== popupWindowLargeImage) { 
+    enableValidation(validationParameters);
+  } 
+}
+
+function closePopup(currentPopup) {
+  removeClosePopupListeners(currentPopup);
+  currentPopup.classList.remove('popup_opened');
 }
 
 // Попап редактирования профиля
 function openEditProfilePopup() {
-  openPopup(popupEditProfile);
+  currentPopup = popupEditProfile;
+  openPopup(currentPopup);
   inputName.value = profileName.textContent;
   inputRole.value = profileRole.textContent;
 }
@@ -55,7 +72,8 @@ function handleEditProfileFormSubmit (evt) {
 
 // Попап добавления карточки
 function openAddCardPopup() {
-  openPopup(popupAddCard);
+  currentPopup = popupAddCard;
+  openPopup(currentPopup);
   inputTitle.value = '';
   inputImageLink.value = '';
 }
@@ -67,7 +85,8 @@ function closeAddCardPopup() {
 //Попап увеличения картинки
 function openPopupImage(evt) {
   const eventTarget = evt.target;
-  openPopup(popupWindowLargeImage);
+  currentPopup = popupWindowLargeImage;
+  openPopup(currentPopup);
   popupImage.src = eventTarget.src;
   popupImage.alt = eventTarget.alt;
   const cardTitle = eventTarget.closest('.card');
@@ -113,15 +132,19 @@ initialCards.forEach(function(elem) {
   addCard(card, 'append');
 });
 
-// Закрытие popup на ESC
-window.addEventListener('keyup', function (evt) {
-  if ((evt.key === 'Escape')) {
-    closePopup(popupEditProfile);
-    closePopup(popupAddCard);
-    closePopup(popupWindowLargeImage);
-  };
-});
+function closePopupEscape() {
+  document.addEventListener('keyup', function (evt) {
+    if ((evt.key === 'Escape')) {
+      closePopup(currentPopup);
+    };
+  });
+}
 
+function closePopupClick(evt) { 
+  if (evt.target === evt.currentTarget) { 
+    closePopup(currentPopup); 
+  } 
+} 
 
 profileEditButton.addEventListener('click', openEditProfilePopup);
 popupEditProfileCloseButton.addEventListener('click', closeEditProfilePopup);

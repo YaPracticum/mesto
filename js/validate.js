@@ -5,12 +5,13 @@ const validationParameters = {
   inactiveButtonClass: 'popup__submit-button_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
+  inputErrorMessage: '.title__input_error',
 }
 
 function showInputError(formElement, inputElement, errorMessage) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(validationParameters.inputErrorClass);
   errorElement.textContent = errorMessage;
+  inputElement.classList.add(validationParameters.inputErrorClass);
   errorElement.classList.add(validationParameters.errorClass);
 };
 
@@ -44,18 +45,31 @@ const setEventListeners = (formElement) => {
   });
 };
 
+function clearErrorMessages(validationParameters) {
+  const allImputElements = (document.querySelectorAll(validationParameters.inputSelector));
+  allImputElements.forEach(element => {
+    element.classList.remove(validationParameters.inputErrorClass);
+  })
+  const allErrorMessages = document.querySelectorAll('.popup__input-error');
+  allErrorMessages.forEach(element => {
+    element.classList.remove(validationParameters.errorClass);
+  })
+  console.log(allErrorMessages);
+}
+
 function enableValidation() {
   const formList = Array.from(document.querySelectorAll(validationParameters.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
-
+    clearErrorMessages(validationParameters); 
     setEventListeners(formElement);
   });
 }
 
-enableValidation(validationParameters);
+
+//enableValidation(validationParameters);
 
 
 function hasInvalidInput(inputList) {
