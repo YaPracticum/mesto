@@ -40,9 +40,19 @@ function addClosePopupListeners(currentPopup) {
 function openPopup(currentPopup) {
   currentPopup.classList.add('popup_opened');
   addClosePopupListeners(currentPopup);
-  if (currentPopup !== popupWindowLargeImage) { 
+  if (currentPopup !== popupWindowLargeImage) {
+    const validationParameters = {
+      formSelector: '.popup__form',
+      inputSelector: '.popup__input',
+      inputSelectorError: '.popup__input-error',
+      submitButtonSelector: '.popup__submit-button',
+      inactiveButtonClass: 'popup__submit-button_inactive',
+      inputErrorClass: 'popup__input_type_error',
+      errorClass: 'popup__input-error_active',
+      inputErrorMessage: '.title__input_error',
+    }
     enableValidation(validationParameters);
-  } 
+  }
 }
 
 function closePopup(currentPopup) {
