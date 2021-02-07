@@ -1,14 +1,3 @@
-const validationParameters = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  inputSelectorError: '.popup__input-error',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
-  inputErrorMessage: '.title__input_error',
-}
-
 function showInputError(formElement, inputElement, errorMessage, validationParameters) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   errorElement.textContent = errorMessage;
@@ -57,7 +46,6 @@ function enableValidation(validationParameters) {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
-    clearErrorMessages(validationParameters); 
     setEventListeners(formElement, validationParameters);
   });
 }

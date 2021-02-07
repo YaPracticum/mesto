@@ -27,6 +27,17 @@ const trashButton = document.querySelector('.card__trash-button');
 const cardTemplate = document.querySelector('#card-template').content;
 let currentPopup;
 
+const validationParameters = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  inputSelectorError: '.popup__input-error',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active',
+  inputErrorMessage: '.title__input_error',
+}
+
 function removeClosePopupListeners(currentPopup) {
   currentPopup.removeEventListener("mousedown", closePopupClick); 
   window.removeEventListener("keyup", closePopupEscape); 
@@ -40,9 +51,13 @@ function addClosePopupListeners(currentPopup) {
 function openPopup(currentPopup) {
   currentPopup.classList.add('popup_opened');
   addClosePopupListeners(currentPopup);
+  clearErrorMessages(validationParameters);
 }
 
 function closePopup(currentPopup) {
+  currentPopup
+    .querySelector(validationParameters.submitButtonSelector)
+    .classList.add(validationParameters.inactiveButtonClass);
   removeClosePopupListeners(currentPopup);
   currentPopup.classList.remove('popup_opened');
 }
@@ -71,8 +86,8 @@ function handleEditProfileFormSubmit (evt) {
 function openAddCardPopup() {
   currentPopup = popupAddCard;
   openPopup(currentPopup);
-  inputTitle.value = '';
-  inputImageLink.value = '';
+  document.getElementById('cardForm').reset();
+  //toggleButtonState();
 }
 
 function closeAddCardPopup() {
