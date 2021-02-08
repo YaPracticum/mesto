@@ -49,15 +49,11 @@ function addClosePopupListeners(currentPopup) {
 }
 
 function openPopup(currentPopup) {
-  currentPopup.classList.add('popup_opened');
   addClosePopupListeners(currentPopup);
-  clearErrorMessages(validationParameters);
+  currentPopup.classList.add('popup_opened');
 }
 
 function closePopup(currentPopup) {
-  currentPopup
-    .querySelector(validationParameters.submitButtonSelector)
-    .classList.add(validationParameters.inactiveButtonClass);
   removeClosePopupListeners(currentPopup);
   currentPopup.classList.remove('popup_opened');
 }
@@ -65,9 +61,13 @@ function closePopup(currentPopup) {
 // Попап редактирования профиля
 function openEditProfilePopup() {
   currentPopup = popupEditProfile;
+  currentPopup
+    .querySelector(validationParameters.submitButtonSelector)
+    .classList.remove(validationParameters.inactiveButtonClass);
   openPopup(currentPopup);
   inputName.value = profileName.textContent;
   inputRole.value = profileRole.textContent;
+  clearErrorMessages(validationParameters);
 }
 
 function closeEditProfilePopup() {
@@ -85,9 +85,12 @@ function handleEditProfileFormSubmit (evt) {
 // Попап добавления карточки
 function openAddCardPopup() {
   currentPopup = popupAddCard;
+  currentPopup
+    .querySelector(validationParameters.submitButtonSelector)
+    .classList.add(validationParameters.inactiveButtonClass);
   openPopup(currentPopup);
   document.getElementById('cardForm').reset();
-  //toggleButtonState();
+  clearErrorMessages(validationParameters);
 }
 
 function closeAddCardPopup() {
