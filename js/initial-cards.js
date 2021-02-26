@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     title: 'Архыз',
     imageLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
