@@ -113,9 +113,12 @@ function closePopupImage() {
 function addCardFormValidator() {
   const settingsAddCardFormValidation = {
     formElement: document.querySelector('.addCardForm'),
-    inputSelector: document.querySelectorAll('.addCardForm .popup__input'),
+    inputs: document.querySelectorAll('.addCardForm .popup__input'),
     inputErrorMessage: document.querySelectorAll('.addCardForm .popup__input-error'),
-    submitButtonSelector: document.querySelector('.addCardForm .popup__submit-button')
+    inputError: 'popup__input_type_error',
+    inputErrorMessageActive: 'popup__input-error_active',
+    submitButton: document.querySelector('.addCardForm .popup__submit-button'),
+    submitButtonInactive: 'popup__submit-button_inactive'
   }
   const addCardFormValidator = new FormValidator(settingsAddCardFormValidation, settingsAddCardFormValidation.formElement);
   const addCardFormValidation = addCardFormValidator.enableValidation();
@@ -126,9 +129,12 @@ function addCardFormValidator() {
 function editProfileFormValidator() {
   const settingseditProfileFormValidation = {
     formElement: document.querySelector('.profileForm'),
-    inputSelector: document.querySelectorAll('.profileForm .popup__input'),
+    inputs: document.querySelectorAll('.profileForm .popup__input'),
     inputErrorMessage: document.querySelectorAll('.profileForm .popup__input-error'),
-    submitButtonSelector: document.querySelector('.profileForm .popup__submit-button')
+    inputError: 'popup__input_type_error',
+    inputErrorMessageActive: 'popup__input-error_active',
+    submitButton: document.querySelector('.profileForm .popup__submit-button'),
+    submitButtonInactive: 'popup__submit-button_inactive'    
   }
   const editProfileFormValidator = new FormValidator(settingseditProfileFormValidation, settingseditProfileFormValidation.formElement);
   const editProfileFormValidation = editProfileFormValidator.enableValidation();
@@ -140,7 +146,8 @@ editProfileFormValidator();
 
 // Вывод заданного массива карточек на страницу
 initialCards.forEach((item) => {
-  const card = new Card(item.title, item.imageLink);
+  const template = '.card-template';
+  const card = new Card(item.title, item.imageLink, template);
   const cardElement = card.generateCard();
   document.querySelector('.cards').append(cardElement);
 });
@@ -149,7 +156,8 @@ initialCards.forEach((item) => {
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
 
-  const card = new Card(inputTitle.value, inputImageLink.value);
+  const template = '.card-template';
+  const card = new Card(inputTitle.value, inputImageLink.value, template);
   const cardElement = card.generateCard();
   document.querySelector('.cards').prepend(cardElement);
   closeAddCardPopup();
