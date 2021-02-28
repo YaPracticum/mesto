@@ -1,12 +1,12 @@
 
 class FormValidator {
   constructor(validationParameters, formElement) {
-    this._formElement = formElement;
-    this._inputs = validationParameters.inputs;
-    this._inputErrorMessages = validationParameters.inputErrorMessage;
+    this._formElement = document.querySelector(formElement);
+    this._inputs = document.querySelectorAll(formElement + " " + validationParameters.inputs);
+    this._inputErrorMessages = document.querySelectorAll(formElement + " " + validationParameters.inputErrorMessage);
     this._inputErrorMessageActive = validationParameters.inputErrorMessageActive;
     this._inputError = validationParameters.inputError;
-    this._submitButton = validationParameters.submitButton;
+    this._submitButton = document.querySelector(formElement + " " + validationParameters.submitButton);
     this._submitButtonInactive = validationParameters.submitButtonInactive;
   }
 
@@ -60,6 +60,14 @@ class FormValidator {
         evt.preventDefault();
     });
     this._setEventListener();
+  }
+
+  resetValidation() {
+    this._inputs.forEach((inputElement) => {
+      this._hideInputError(inputElement)
+    });
+
+    this._toggleButtonState();
   }
 
 }

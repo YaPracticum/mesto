@@ -1,25 +1,26 @@
-import { 
-  popupTitle, 
-  popupImage, 
-  openPopupImage
-} from './index.js';
+// import { 
+//   popupTitle, 
+//   popupImage, 
+//   openPopupImage
+// } from './index.js';
 
 class Card {
-  constructor(title, imageLink, template) {
+  constructor(title, imageLink, cardSelector, handleCardClick) {
     this._title = title;
     this._imageLink = imageLink;
-    this._cardTemplate = document.querySelector(template).content.querySelector('.card').cloneNode(true);
-    this._cardImage = this._cardTemplate.querySelector('.card__image');
-    this._cardLike = this._cardTemplate.querySelector('.card__like-button');
+    this._cardSelector = document.querySelector(cardSelector).content.querySelector('.card').cloneNode(true);
+    this._cardImage = this._cardSelector.querySelector('.card__image');
+    this._cardLike = this._cardSelector.querySelector('.card__like-button');
+    this._handleCardClick = handleCardClick;
   }
 
   // Создаем карточку
   generateCard() {
     this._cardImage.src = this._imageLink;
     this._cardImage.alt = this._title;
-    this._cardTemplate.querySelector('.card__title').textContent = this._title;
+    this._cardSelector.querySelector('.card__title').textContent = this._title;
     this._setEventListeners();
-    return this._cardTemplate;
+    return this._cardSelector;
   }
 
   // Устанавливаем слушателей
@@ -28,12 +29,15 @@ class Card {
       this._handleLikeClick();
     });
 
-    this._cardTemplate.querySelector('.card__trash-button').addEventListener('click', () => {
+    this._cardSelector.querySelector('.card__trash-button').addEventListener('click', () => {
       this._handleTrashCanClick();
     });
 
+    // this._cardImage.addEventListener('click', () => {
+    //   this._handleImagePopup();
+    // });
     this._cardImage.addEventListener('click', () => {
-      this._handleImagePopup();
+      this._handleCardClick(this._title, this._imageLink)
     });
   }
 
@@ -44,16 +48,16 @@ class Card {
 
   // Удаляем карточку по клику на "мусорке"
   _handleTrashCanClick() {
-    this._cardTemplate.closest('.card').remove();
+    this._cardSelector.closest('.card').remove();
   }
 
   // Показываем большую картинку
-  _handleImagePopup() {
-    popupTitle.textContent = this._title;
-    popupImage.src = this._imageLink;
-    popupImage.alt = this._title;
-    openPopupImage();
-  }
+  // _handleImagePopup() {
+  //   popupTitle.textContent = this._title;
+  //   popupImage.src = this._imageLink;
+  //   popupImage.alt = this._title;
+  //   openPopupImage();
+  // }
 
 }
 
