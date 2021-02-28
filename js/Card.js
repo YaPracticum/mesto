@@ -1,9 +1,3 @@
-// import { 
-//   popupTitle, 
-//   popupImage, 
-//   openPopupImage
-// } from './index.js';
-
 class Card {
   constructor(title, imageLink, cardSelector, handleCardClick) {
     this._title = title;
@@ -33,9 +27,6 @@ class Card {
       this._handleTrashCanClick();
     });
 
-    // this._cardImage.addEventListener('click', () => {
-    //   this._handleImagePopup();
-    // });
     this._cardImage.addEventListener('click', () => {
       this._handleCardClick(this._title, this._imageLink)
     });
@@ -50,15 +41,6 @@ class Card {
   _handleTrashCanClick() {
     this._cardSelector.closest('.card').remove();
   }
-
-  // Показываем большую картинку
-  // _handleImagePopup() {
-  //   popupTitle.textContent = this._title;
-  //   popupImage.src = this._imageLink;
-  //   popupImage.alt = this._title;
-  //   openPopupImage();
-  // }
-
 }
 
 export { Card }

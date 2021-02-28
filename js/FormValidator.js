@@ -53,7 +53,7 @@ class FormValidator {
     })
   }
 
-  // Публичный метод включения валидацию
+  // Публичный метод включения валидации
   enableValidation() {
     this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
@@ -61,9 +61,10 @@ class FormValidator {
     this._setEventListener();
   }
 
+  // Публичный метод сброса ошибок форм
   resetValidation() {
-    this._inputs.forEach((inputElement) => {
-      this._hideInputError(inputElement)
+    this._inputs.forEach((inputElement, index) => {
+      this._hideInputError(inputElement, index)
     });
     this._toggleButtonState();
   }
