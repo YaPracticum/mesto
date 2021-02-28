@@ -31,16 +31,11 @@ const popups = document.querySelectorAll('.popup');
 let currentPopup;
 
 
-
-
 function handleCardClick(title, imagelink) {
   popupImage.src = imagelink;
   popupTitle.textContent = title;
   openPopup(popupWindowLargeImage);
 }
-
-
-
 
 
 // // Устанавливаем слушателей открытия попапов по Escape и клику на overlay
@@ -86,9 +81,7 @@ function openEditProfilePopup() {
   openPopup(currentPopup);
   inputName.value = profileName.textContent;
   inputRole.value = profileRole.textContent;
-  // const reset = new FormValidator();
-  // reset.resetValidation();
-  //clearErrorMessages(validationParameters);
+  //resetValidation()
 }
 
 // function closeEditProfilePopup() {
@@ -143,6 +136,8 @@ function addCardFormValidator() {
   return addCardFormValidation;
 }
 
+addCardFormValidator();
+
 // Экземпляр класса FormValidator для редактирование профиля
 function editProfileFormValidator() {
   const settingseditProfileFormValidation = {
@@ -159,16 +154,13 @@ function editProfileFormValidator() {
   return editProfileFormValidation;
 }
 
-addCardFormValidator();
 editProfileFormValidator();
-
 
 function createCard(title, imageLink) {
   const cardSelector = '.card-template';
   const card = new Card(title, imageLink, cardSelector, handleCardClick);
   const cardElement = card.generateCard();
   return cardElement;
-
 }
 
 initialCards.forEach(element => {
@@ -194,13 +186,13 @@ function handleAddCardFormSubmit (evt) {
 }
 
 //Закрытие попапов по Escape
-function closePopupEscape() {
-  document.addEventListener('keyup', function (evt) {
-    if ((evt.key === 'Escape')) {
-      closePopup(currentPopup);
-    };
-  });
-}
+// function closePopupEscape() {
+//   document.addEventListener('keyup', function (evt) {
+//     if ((evt.key === 'Escape')) {
+//       closePopup(currentPopup);
+//     }
+//   })
+// }
 
 // Закрытие попапов по клику на overlay
 // function closePopupClick(evt) { 
@@ -208,9 +200,6 @@ function closePopupEscape() {
 //     closePopup(currentPopup);
 //   } 
 // }
-
-
-
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
@@ -221,12 +210,10 @@ popups.forEach((popup) => {
       closePopup(popup)
     }
   })
-})
-
-popups.forEach((popup) => {
   document.addEventListener('keyup', (evt) => {
-    if (evt.key === 'Escape' && evt.target.classList.contains('popup_opened')) {
-        closePopup(popup)
+    const openedPopup = document.querySelector('.popup_opened');
+    if (openedPopup && evt.key === 'Escape') {
+      closePopup(popup)
     }
   })
 })

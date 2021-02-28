@@ -28,7 +28,6 @@ class FormValidator {
   // Проверяем валидности импутов
   _checkInputValidity(inputElement, index) {
     if (!inputElement.validity.valid) {
-      //console.log(input, index);
       this._showInputError(inputElement, index);
     } else {
       this._hideInputError(inputElement, index);
@@ -66,7 +65,6 @@ class FormValidator {
     this._inputs.forEach((inputElement) => {
       this._hideInputError(inputElement)
     });
-
     this._toggleButtonState();
   }
 
