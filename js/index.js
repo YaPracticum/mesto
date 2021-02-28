@@ -39,11 +39,13 @@ let currentPopup;
 // Открытие попапов
 function openPopup(currentPopup) {
   currentPopup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
 }
 
 // Закрытие попапов
 function closePopup(currentPopup) {
   currentPopup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 // Попап большой картинки
@@ -115,19 +117,21 @@ function handleAddCardFormSubmit (evt) {
   closePopup(popupAddCard);
 }
 
-// Закрытие попапов по клику на overlay и по Escape
+// Закрытие попапов по Escape
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
+// Закрытие попапов по клику на overlay
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
         closePopup(popup)
     }
     if (evt.target.classList.contains('popup__close-button')) {
-      closePopup(popup)
-    }
-  })
-  document.addEventListener('keyup', (evt) => {
-    const openedPopup = document.querySelector('.popup_opened');
-    if (openedPopup && evt.key === 'Escape') {
       closePopup(popup)
     }
   })
