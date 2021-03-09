@@ -1,40 +1,34 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { initialCards } from './initial-cards.js';
+import { Card } from '../../js/Card.js';
+import { FormValidator } from '../../js/FormValidator.js';
+import {Section} from '../../components/Section.js';
 
-const popupEditProfile = document.querySelector('#popup_edit-profile');
-const formEditProfileElement = document.querySelector('#popup_edit-profile');
+// import { initialCards } from '../../js/initial-cards.js';
 
-const popupAddCard = document.querySelector('#popup_add-card');
-const formAddCardElement = document.querySelector('#popup_add-card');
-const addCardForm = document.getElementById('cardForm');
-const cardsContainer = document.querySelector('.cards');
-
-const profileEditButton = document.querySelector('.profile__edit-button');
-const profileAddButton = document.querySelector('.profile__add-button');
-
-const inputName = document.querySelector('.popup__input_name');
-const inputRole = document.querySelector('.popup__input_role');
-const profileName = document.querySelector('.profile__name');
-const profileRole = document.querySelector('.profile__role');
-const inputTitle = document.querySelector('.popup__input_title');
-const inputImageLink = document.querySelector('.popup__input_imageLink');
-
-const popupWindowLargeImage = document.querySelector('#popup_large-image');
-const popupImage = document.querySelector('.popup__image');
-const popupTitle = document.querySelector('.popup__title-image');
-const popups = document.querySelectorAll('.popup');
-
-const validationParameters = {
-  inputs: '.popup__input',
-  inputErrorMessage: '.popup__input-error',
-  inputError: 'popup__input_type_error',
-  inputErrorMessageActive: 'popup__input-error_active',
-  submitButton: '.popup__submit-button',
-  submitButtonInactive: 'popup__submit-button_inactive'
-}
+import {
+  initialCards,
+  popupEditProfile,
+  formEditProfileElement,
+  popupAddCard,
+  formAddCardElement,
+  addCardForm,
+  cardsContainer,
+  profileEditButton,
+  profileAddButton,
+  inputName,
+  inputRole,
+  profileName,
+  profileRole,
+  inputTitle,
+  inputImageLink,
+  popupWindowLargeImage,
+  popupImage,
+  popupTitle,
+  popups,
+  validationParameters
+  } from '../../utils/constants.js';
 
 let currentPopup;
+
 
 // Открытие попапов
 function openPopup(currentPopup) {
