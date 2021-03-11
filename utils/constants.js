@@ -31,7 +31,7 @@ const formEditProfileElement = document.querySelector('#popup_edit-profile');
 const popupAddCard = document.querySelector('#popup_add-card');
 const formAddCardElement = document.querySelector('#popup_add-card');
 const addCardForm = document.getElementById('cardForm');
-const cardsContainer = document.querySelector('.cards');
+const cardsContainer = '.cards';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileAddButton = document.querySelector('.profile__add-button');

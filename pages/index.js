@@ -1,6 +1,6 @@
-import { Card } from '../../js/Card.js';
-import { FormValidator } from '../../js/FormValidator.js';
-import {Section} from '../../components/Section.js';
+import { Card } from '../js/Card.js';
+import { FormValidator } from '../js/FormValidator.js';
+import {Section} from '../components/Section.js';
 
 // import { initialCards } from '../../js/initial-cards.js';
 
@@ -25,10 +25,42 @@ import {
   popupTitle,
   popups,
   validationParameters
-  } from '../../utils/constants.js';
+  } from '../utils/constants.js';
 
 let currentPopup;
 
+
+// // Создание карточки
+// function createCard(title, imageLink) {
+//   const cardSelector = '.card-template';
+//   const card = new Card(title, imageLink, cardSelector, handleCardClick);
+//   const cardElement = card.generateCard();
+//   return cardElement;
+// }
+
+// // Вывод заданного массива карточек на страницу
+// initialCards.forEach(element => {
+//   const card = createCard(element.title, element.imageLink);
+//   cardsContainer.append(card);
+// })
+
+
+const createCard = (title, imageLink) => {
+  const cardSelector = '.card-template';
+  const card = new Card(title, imageLink, cardSelector, handleCardClick);
+  return card;
+}
+
+const cardsList = new Section({
+  items: initialCards,
+  renderer: (element) => {
+    const card = createCard(element.title, element.imageLink);
+    const cardElement = card.generateCard();
+    cardsList.addItem(cardElement);
+  }
+}, cardsContainer);
+
+cardsList.renderItems();
 
 // Открытие попапов
 function openPopup(currentPopup) {
@@ -88,26 +120,14 @@ addCardFormValidator.enableValidation();
 const editProfileFormValidator = new FormValidator(validationParameters, '.profileForm');
 editProfileFormValidator.enableValidation(); 
 
-// Создание карточки
-function createCard(title, imageLink) {
-  const cardSelector = '.card-template';
-  const card = new Card(title, imageLink, cardSelector, handleCardClick);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-// Вывод заданного массива карточек на страницу
-initialCards.forEach(element => {
-  const card = createCard(element.title, element.imageLink);
-  cardsContainer.append(card);
-})
-
 // Обработчик «отправки» формы добавления карточки
 function handleAddCardFormSubmit (evt) {
   evt.preventDefault(); 
 
   const card = createCard(inputTitle.value, inputImageLink.value);
-  cardsContainer.prepend(card);
+  const cardElement = card.generateCard();
+  cardsList.addItem(cardElement, 'prepend');
+  // cardsContainer.prepend(card);
   closePopup(popupAddCard);
 }
 
