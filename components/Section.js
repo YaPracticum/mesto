@@ -9,16 +9,8 @@ export class Section {
     this._items.forEach(item => this._renderer(item))
   }
 
-  // addItem(element) {
-  //   this._container.append(element);
-  // }
-
   addItem(element, order) {
-    if (order === 'prepend') {
-      this._container.prepend(element);
-    } else {
-      this._container.append(element);
-    }
+    order === 'prepend' ? this._container.prepend(element) : this._container.append(element)
   }
   
 }
