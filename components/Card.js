@@ -8,7 +8,6 @@ class Card {
     this._handleCardClick = handleCardClick;
   }
 
-  // Создаем карточку
   generateCard() {
     this._cardImage.src = this._imageLink;
     this._cardImage.alt = this._title;
@@ -17,7 +16,6 @@ class Card {
     return this._cardSelector;
   }
 
-  // Устанавливаем слушателей
   _setEventListeners() {
     this._cardLike.addEventListener('click', () => {
       this._handleLikeClick();
@@ -32,12 +30,10 @@ class Card {
     });
   }
 
-  // Показываем/убираем лайк
   _handleLikeClick() {
     this._cardLike.classList.toggle('card__like-button_active');
   }
 
-  // Удаляем карточку по клику на "мусорке"
   _handleTrashCanClick() {
     this._cardSelector.closest('.card').remove();
   }

@@ -25,12 +25,9 @@ const initialCards = [
   }
 ];
 
-const popupEditProfile = document.querySelector('#popup_edit-profile');
-const formEditProfileElement = document.querySelector('#popup_edit-profile');
+const popupEditProfile = '#popup_edit-profile';
 
-const popupAddCard = document.querySelector('#popup_add-card');
-const formAddCardElement = document.querySelector('#popup_add-card');
-const addCardForm = document.getElementById('cardForm');
+const popupAddCard = ('#popup_add-card');
 const cardsContainer = '.cards';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -38,15 +35,13 @@ const profileAddButton = document.querySelector('.profile__add-button');
 
 const inputName = document.querySelector('.popup__input_name');
 const inputRole = document.querySelector('.popup__input_role');
-const profileName = document.querySelector('.profile__name');
-const profileRole = document.querySelector('.profile__role');
-const inputTitle = document.querySelector('.popup__input_title');
-const inputImageLink = document.querySelector('.popup__input_imageLink');
 
-const popupWindowLargeImage = document.querySelector('#popup_large-image');
+const profileName = '.profile__name';
+const profileRole = '.profile__role';
+
+const popupWindowLargeImage = '#popup_large-image';
 const popupImage = document.querySelector('.popup__image');
 const popupTitle = document.querySelector('.popup__title-image');
-const popups = document.querySelectorAll('.popup');
 
 const validationParameters = {
   inputs: '.popup__input',
@@ -60,10 +55,7 @@ const validationParameters = {
 export {
   initialCards,
   popupEditProfile,
-  formEditProfileElement,
   popupAddCard,
-  formAddCardElement,
-  addCardForm,
   cardsContainer,
   profileEditButton,
   profileAddButton,
@@ -71,11 +63,8 @@ export {
   inputRole,
   profileName,
   profileRole,
-  inputTitle,
-  inputImageLink,
   popupWindowLargeImage,
   popupImage,
   popupTitle,
-  popups,
   validationParameters
   };

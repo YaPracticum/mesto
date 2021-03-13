@@ -1,21 +1,21 @@
 export class UserInfo {
-  constructor({ userName, userRole }) {
-    this._userName = userName;
-    this._userRole = userRole;
-    this._name = document.querySelector(this._userName);
-    this._role = document.querySelector(this._userRole);
+  constructor({ profileName, profileRole }) {
+    this._profileName = profileName;
+    this._profileRole = profileRole;
+    this._name = document.querySelector(this._profileName);
+    this._role = document.querySelector(this._profileRole);
   }
 
   getUserInfo() {
-    const userData = {
+    const profileData = {
       name: this._name.textContent,
-      role: this._role.textContent
+      role: this._role.textContent,
     };
-    return userData;
+    return profileData;
   }
 
-  setUserInfo(userData) {
-    this._name.textContent = userData.name;
-    this._role.textContent = userData.role;
+  setUserInfo(data) {
+    this._name.textContent = data.name;
+    this._role.textContent = data.role;
   }
 }
