@@ -1,11 +1,11 @@
 export class FormValidator {
   constructor(validationParameters, formElement) {
     this._formElement = document.querySelector(formElement);
-    this._inputs = document.querySelectorAll(formElement + " " + validationParameters.inputs);
-    this._inputErrorMessages = document.querySelectorAll(formElement + " " + validationParameters.inputErrorMessage);
+    this._inputs = this._formElement.querySelectorAll(validationParameters.inputs);
+    this._inputErrorMessages = this._formElement.querySelectorAll(validationParameters.inputErrorMessage);
     this._inputErrorMessageActive = validationParameters.inputErrorMessageActive;
     this._inputError = validationParameters.inputError;
-    this._submitButton = document.querySelector(formElement + " " + validationParameters.submitButton);
+    this._submitButton = this._formElement.querySelector(validationParameters.submitButton);
     this._submitButtonInactive = validationParameters.submitButtonInactive;
   }
 

@@ -33,10 +33,10 @@ const createCard = (title, imageLink) => {
 const popupLargeImage = new PopupWithImage(popupWindowLargeImage);
 
 function handleCardClick(title, imagelink) {
-  popupImage.src = imagelink;
-  popupTitle.textContent = title;
   popupLargeImage.open(title, imagelink);
 }
+
+popupLargeImage.setEventListeners();
 
 const cardsList = new Section({
   items: initialCards,
@@ -58,6 +58,8 @@ const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
   }
 })
 
+popupWithAddCardForm.setEventListeners();
+
 profileAddButton.addEventListener('click', () => {
   popupWithAddCardForm.open();
   addCardFormValidator.resetValidation();
@@ -71,6 +73,8 @@ const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
     popupWithEditProfile.close()
   }
 })
+
+popupWithEditProfile.setEventListeners();
 
 profileEditButton.addEventListener('click', () => {
   const profileData = userInfo.getUserInfo();
