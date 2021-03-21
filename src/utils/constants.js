@@ -40,8 +40,6 @@ const profileName = '.profile__name';
 const profileRole = '.profile__role';
 
 const popupWindowLargeImage = '#popup_large-image';
-const popupImage = document.querySelector('.popup__image');
-const popupTitle = document.querySelector('.popup__title-image');
 
 const validationParameters = {
   inputs: '.popup__input',
@@ -64,7 +62,5 @@ export {
   profileName,
   profileRole,
   popupWindowLargeImage,
-  popupImage,
-  popupTitle,
   validationParameters
   };

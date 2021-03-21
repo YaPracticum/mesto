@@ -19,8 +19,6 @@ import {
   profileName,
   profileRole,
   popupWindowLargeImage,
-  popupImage,
-  popupTitle,
   validationParameters
   } from '../utils/constants.js';
 
