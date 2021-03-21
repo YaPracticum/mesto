@@ -1,5 +1,7 @@
 @import url(__image/card__image.css);
 @import url(__title/card__title.css);
+@import url(__like-container/card__like-container.css);
+@import url(__like-counter/card__like-counter.css);
 @import url(__like-button/card__like-button.css);
 @import url(__trash-button/card__trash-button.css);
 @import url(__footer/card__footer.css);

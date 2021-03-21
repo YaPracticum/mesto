@@ -2,7 +2,27 @@
   margin-right: 30px;
   max-width: 120px;
   max-height: 120px;
+  cursor: pointer;
   border-radius: 50%;
+  position: relative;
+}
+
+.profile__avatar:before {
+  transition: 0.4s ease-in-out;
+  content: url(../../../images/pen-icon.svg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.profile__avatar:hover:before {
+  opacity: 1;
+}
+
+.profile__avatar:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 500px) {

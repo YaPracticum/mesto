@@ -14,7 +14,9 @@
 
     <main>
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="Жак Кусто">
+        <div class="profile__avatar">
+          <img class="profile__avatar-image" src="./images/avatar.jpg" alt="Жак Кусто">
+        </div>
         <div class="profile__info">
           <div class="profile__description">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -56,6 +58,23 @@
       </div>
     </div>
 
+    <!-- Попап обновления аватара -->
+    <div class="popup" id="popup_edit-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" id="popup_edit-avatar_close-button" type="button" aria-label="Закрыть"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form name="avatarForm" class="popup__form avatarForm" id="editAvatarForm" novalidate>
+          <label class="popup__label">
+            <input id="avatarLink-input" type="url" name="avatarLink" placeholder="Ссылка на картинку" class="popup__input popup__input_avatarLink" required>
+            <span class="avatarLink-input-error popup__input-error"></span>
+          </label>
+          <button class="popup__submit-button" type="submit" aria-label="Сохранить">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Попап добавления карточки -->
     <div class="popup popup_add-card" id="popup_add-card">
       <div class="popup__container" id="popup__container">
@@ -77,6 +96,17 @@
       </div>
     </div>
 
+    <!-- Попап удаления карточки -->
+    <div class="popup popup_delete-card">
+      <div class="popup__container" id="popup__container">
+        <button class="popup__close-button" id="popup_delete-card_close-button" type="button" aria-label="Закрыть"></button>
+        <h3 class="popup__title">Вы уверены?</h3>
+        <button class="popup__submit-button" id="delete-card-button" type="submit" aria-label="Подтверждение удаления карточки">
+          Да
+        </button>
+      </div>
+    </div>
+
     <!-- Попап увеличения картинки -->
     <div class="popup" id="popup_large-image">
       <div class="popup__container-image">
@@ -95,7 +125,10 @@
       <img src="#" class="card__image" alt=" ">
       <div class="card__footer">
         <h2 class="card__title"></h2>
-        <button class="card__like-button" type="button" aria-label="Нравится"></button>
+        <div class="card__like-container">
+          <button class="card__like-button" type="button" aria-label="Нравится"></button>
+          <span class="card__like-counter">2</span>
+        </div>
       </div>
     </li>
   </template>
