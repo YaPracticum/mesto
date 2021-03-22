@@ -23,6 +23,17 @@ import {
   validationParameters
   } from '../utils/constants.js';
 
+
+const options = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  headers: {
+    authorization: 'ecbf5b4d-1113-4e35-a3c6-5109ec97ddb7',
+    'Content-Type': 'application/json'
+  },
+};
+
+const api = new Api(options);
+
 const createCard = (title, imageLink) => {
   const cardSelector = '.card-template';
   const card = new Card(title, imageLink, cardSelector, handleCardClick);
