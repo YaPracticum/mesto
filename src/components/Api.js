@@ -1,7 +1,7 @@
 class Api {
-  constructor(config) {
-    this.baseUrl = config.baseUrl;
-    this.headers = config.headers;
+  constructor(options) {
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
   }
 
   getInitialData() {
@@ -9,9 +9,9 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       method: 'GET',
-      headers: this._headers
+      headers: this.headers
     }).then((res) => {
         if (res.ok) {
           return res.json();
@@ -21,9 +21,9 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       method: 'GET',
-      headers: this._headers
+      headers: this.headers
     }).then((res) => {
         if (res.ok) {
           return res.json();

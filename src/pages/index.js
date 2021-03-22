@@ -20,23 +20,23 @@ import {
   profileName,
   profileRole,
   popupWindowLargeImage,
-  validationParameters
+  validationParameters,
+  profileAvatar
   } from '../utils/constants.js';
 
 
-const options = {
+const api = new Api ({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
   headers: {
     authorization: 'ecbf5b4d-1113-4e35-a3c6-5109ec97ddb7',
     'Content-Type': 'application/json'
-  },
-};
-
-const api = new Api(options);
+  }
+});
 
 api.getInitialData()
   .then((data) => {
     const [user, cards] = data;
+    userInfo.setUserInfo(user);
   })
 
 const createCard = (title, imageLink) => {
@@ -44,6 +44,8 @@ const createCard = (title, imageLink) => {
   const card = new Card(title, imageLink, cardSelector, handleCardClick);
   return card;
 }
+
+const userInfo = new UserInfo({ profileName, profileRole, profileAvatar });
 
 const popupLargeImage = new PopupWithImage(popupWindowLargeImage);
 
@@ -80,7 +82,7 @@ profileAddButton.addEventListener('click', () => {
   addCardFormValidator.resetValidation();
 })
 
-const userInfo = new UserInfo({ profileName,  profileRole });
+// const userInfo = new UserInfo({ profileName,  profileRole });
 
 const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
   submit: (data) => {
