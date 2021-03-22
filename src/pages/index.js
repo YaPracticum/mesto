@@ -34,6 +34,11 @@ const options = {
 
 const api = new Api(options);
 
+api.getInitialData()
+  .then((data) => {
+    const [user, cards] = data;
+  })
+
 const createCard = (title, imageLink) => {
   const cardSelector = '.card-template';
   const card = new Card(title, imageLink, cardSelector, handleCardClick);
