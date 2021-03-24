@@ -23,7 +23,6 @@ import {
   profileAvatar
   } from '../utils/constants.js';
 
-
 const api = new Api ({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
   headers: {
@@ -32,15 +31,14 @@ const api = new Api ({
   }
 });
 
-
 Promise.all([api.getInitialCards(), api.getUserInfo()])
-    .then(([cards, user]) => {
-      userInfo.setUserInfo(user);
-      cardsList.renderItems(cards);
-    })
-    .catch((err) => {
-        console.log(`${err}`);
-    });
+  .then(([cards, user]) => {
+    userInfo.setUserInfo(user);
+    cardsList.renderItems(cards);
+  })
+  .catch((err) => {
+      console.log(`${err}`);
+  });
 
 const createCard = (title, imageLink) => {
   const cardSelector = '.card-template';
@@ -66,8 +64,6 @@ const cardsList = new Section({
   }
 }, cardsContainer);
 
-// cardsList.renderItems();
-
 const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
   submit: (element) => {
     const card = createCard(element.title, element.imageLink);
@@ -84,12 +80,18 @@ profileAddButton.addEventListener('click', () => {
   addCardFormValidator.resetValidation();
 })
 
-// const userInfo = new UserInfo({ profileName,  profileRole });
-
 const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
   submit: (data) => {
-    userInfo.setUserInfo(data);
-    popupWithEditProfile.close()
+    api.setUserInfo(data)
+    .then((res) => {
+      userInfo.setUserInfo(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupWithEditProfile.close();
+    })
   }
 })
 
