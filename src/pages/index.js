@@ -60,16 +60,15 @@ const cardsList = new Section({
 
 const createCard = (data) => {
   const cardSelector = '.card-template';
-  const card = new Card(data.name, data.link, cardSelector, handleCardClick);
+  const card = new Card(data, cardSelector, handleCardClick);
   return card;
 }
 
 const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
   submit: (data) => {
-    api.postCard(data)
+    api.createNewCard(data)
     .then((res) => {
       const card = createCard(res);
-      console.log(res);
       const cardElement = card.generateCard();
       cardsList.addItem(cardElement, 'prepend');
     })
@@ -81,15 +80,6 @@ const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
     })
   }
 })
-
-// const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
-//   submit: (element) => {
-//     const card = createCard(element.title, element.imageLink);
-//     const cardElement = card.generateCard();
-//     cardsList.addItem(cardElement, 'prepend');
-//     popupWithAddCardForm.close();
-//   }
-// })
 
 popupWithAddCardForm.setEventListeners();
 

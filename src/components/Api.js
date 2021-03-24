@@ -48,7 +48,7 @@ class Api {
       .catch(err => Promise.reject(err))
   }
 
-  postCard(card) {
+  createNewCard(card) {
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
