@@ -3,7 +3,9 @@ class Card {
     this._data = data;
     this._cardSelector = document.querySelector(cardSelector).content.querySelector('.card').cloneNode(true);
     this._cardImage = this._cardSelector.querySelector('.card__image');
-    this._cardLike = this._cardSelector.querySelector('.card__like-button');
+    this._cardLikeButton = this._cardSelector.querySelector('.card__like-button');
+    this._cardLikeSelector = this._cardSelector.querySelector('.card__like-counter');
+
     this._handleCardClick = handleCardClick;
   }
 
@@ -11,12 +13,13 @@ class Card {
     this._cardImage.src = this._data.link;
     this._cardImage.alt = this._data.name;
     this._cardSelector.querySelector('.card__title').textContent = this._data.name;
+    this._cardLikeSelector.textContent = String(this._data.likes.length);
     this._setEventListeners();
     return this._cardSelector;
   }
 
   _setEventListeners() {
-    this._cardLike.addEventListener('click', () => {
+    this._cardLikeButton.addEventListener('click', () => {
       this._handleLikeClick();
     });
 
@@ -30,7 +33,7 @@ class Card {
   }
 
   _handleLikeClick() {
-    this._cardLike.classList.toggle('card__like-button_active');
+    this._cardLikeButton.classList.toggle('card__like-button_active');
   }
 
   _handleTrashCanClick() {

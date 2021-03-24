@@ -55,6 +55,7 @@ const cardsList = new Section({
     const card = createCard(data);
     const cardElement = card.generateCard();
     cardsList.addItem(cardElement);
+    //card.likeCounter(data);
   }
 }, cardsContainer);
 
