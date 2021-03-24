@@ -6,7 +6,6 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      method: 'GET',
       headers: this.headers,
     })
       .then((res) => {
@@ -18,13 +17,13 @@ class Api {
       .catch(err => Promise.reject(err))
   }
 
-  setUserInfo(item) {
+  setUserInfo(user) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-          name: item.name,
-          about: item.about
+          name: user.name,
+          about: user.about
       })
     })
       .then(res => {
@@ -48,6 +47,25 @@ class Api {
       })
       .catch(err => Promise.reject(err))
   }
+
+  postCard(card) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: card.name,
+        link: card.link,
+      })
+    })
+    .then(res => {
+      if (res.ok) {
+          return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+    })
+    .catch(err => Promise.reject(err))
+  }
+  
 
   // другие методы работы с API
 }
