@@ -4,32 +4,48 @@ class Api {
     this.headers = options.headers;
   }
 
-  getInitialData() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
-  }
-
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      method: 'GET',
-      headers: this.headers
-    }).then((res) => {
+      headers: this.headers,
+    })
+      .then((res) => {
         if (res.ok) {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
+      .catch(err => Promise.reject(err))
+  }
+
+  setUserInfo(item) {
+    return fetch(`${this.baseUrl}users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+          name: item.name,
+          about: item.about
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch(err => Promise.reject(err))
   }
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
-      method: 'GET',
-      headers: this.headers
-    }).then((res) => {
+      headers: this.headers,
+    })
+      .then((res) => {
         if (res.ok) {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
+      .catch(err => Promise.reject(err))
   }
 
   // другие методы работы с API

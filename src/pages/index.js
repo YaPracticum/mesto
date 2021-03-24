@@ -9,7 +9,6 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
 import {
-  initialCards,
   popupEditProfile,
   popupAddCard,
   cardsContainer,
@@ -33,11 +32,15 @@ const api = new Api ({
   }
 });
 
-api.getInitialData()
-  .then((data) => {
-    const [user, cards] = data;
-    userInfo.setUserInfo(user);
-  })
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+    .then(([cards, user]) => {
+      userInfo.setUserInfo(user);
+      cardsList.renderItems(cards);
+    })
+    .catch((err) => {
+        console.log(`${err}`);
+    });
 
 const createCard = (title, imageLink) => {
   const cardSelector = '.card-template';
@@ -56,15 +59,14 @@ function handleCardClick(title, imagelink) {
 popupLargeImage.setEventListeners();
 
 const cardsList = new Section({
-  items: initialCards,
-  renderer: (element) => {
-    const card = createCard(element.title, element.imageLink);
+  renderer: (data) => {
+    const card = createCard(data.name, data.link);
     const cardElement = card.generateCard();
     cardsList.addItem(cardElement);
   }
 }, cardsContainer);
 
-cardsList.renderItems();
+// cardsList.renderItems();
 
 const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
   submit: (element) => {
