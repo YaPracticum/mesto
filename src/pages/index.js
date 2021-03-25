@@ -25,6 +25,8 @@ import {
   popupConfirmation
   } from '../utils/constants.js';
 
+  let myUserId;
+
 const api = new Api ({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
   headers: {
@@ -37,6 +39,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cards, user]) => {
     userInfo.setUserInfo(user);
     cardsList.renderItems(cards);
+    myUserId = user._id;
   })
   .catch((err) => {
       console.log(`${err}`);
@@ -94,7 +97,7 @@ const cardsList = new Section({
 
 const createCard = (data) => {
   const cardSelector = '.card-template';
-  const card = new Card(data, cardSelector, handleCardClick, handleTrashCanClick);
+  const card = new Card(data, myUserId, cardSelector, handleCardClick, handleTrashCanClick);
   return card;
 }
 

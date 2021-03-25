@@ -69,7 +69,7 @@ class Api {
   deleteCard(data) {
     return fetch(`${this.baseUrl}/cards/${data._id}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: this.headers,
     })
     .then(res => {
       if (res.ok) {
@@ -80,8 +80,6 @@ class Api {
     .catch(err => Promise.reject(err))
   }
   
-
-  // другие методы работы с API
 }
 
 export { Api }
