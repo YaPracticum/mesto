@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, cardSelector, handleCardClick) {
+  constructor(data, cardSelector, handleCardClick, handleTrashCanClick) {
     this._data = data;
     this._cardSelector = document.querySelector(cardSelector).content.querySelector('.card').cloneNode(true);
     this._cardImage = this._cardSelector.querySelector('.card__image');
@@ -7,6 +7,7 @@ class Card {
     this._cardLikeSelector = this._cardSelector.querySelector('.card__like-counter');
 
     this._handleCardClick = handleCardClick;
+    this._handleTrashCanClick = handleTrashCanClick;
   }
 
   generateCard() {
@@ -24,7 +25,7 @@ class Card {
     });
 
     this._cardSelector.querySelector('.card__trash-button').addEventListener('click', () => {
-      this._handleTrashCanClick();
+      this._handleTrashCanClick(this._data._id);
     });
 
     this._cardImage.addEventListener('click', () => {
@@ -36,9 +37,9 @@ class Card {
     this._cardLikeButton.classList.toggle('card__like-button_active');
   }
 
-  _handleTrashCanClick() {
-    this._cardSelector.closest('.card').remove();
-  }
+  // _handleTrashCanClick() {
+  //   this._cardSelector.closest('.card').remove();
+  // }
 }
 
 export { Card }

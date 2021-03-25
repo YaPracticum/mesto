@@ -59,7 +59,21 @@ class Api {
     })
     .then(res => {
       if (res.ok) {
-          return res.json()
+        return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+    })
+    .catch(err => Promise.reject(err))
+  }
+
+  deleteCard(data) {
+    return fetch(`${this.baseUrl}/cards/${data._id}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json()
       }
       return Promise.reject(`Ошибка: ${res.status}`)
     })

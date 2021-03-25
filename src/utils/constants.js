@@ -1,6 +1,6 @@
 const popupEditProfile = '#popup_edit-profile';
 
-const popupAddCard = ('#popup_add-card');
+const popupAddCard = '#popup_add-card';
 const cardsContainer = '.cards';
 
 const profileEditButton = document.querySelector('.profile__edit-button');
@@ -14,6 +14,8 @@ const profileRole = '.profile__role';
 const profileAvatar = '.profile__avatar-image';
 
 const popupWindowLargeImage = '#popup_large-image';
+
+const popupConfirmation = '.popup_confirmation';
 
 const validationParameters = {
   inputs: '.popup__input',
@@ -36,5 +38,6 @@ export {
   profileRole,
   popupWindowLargeImage,
   validationParameters,
-  profileAvatar
+  profileAvatar,
+  popupConfirmation
   };

@@ -97,13 +97,15 @@
     </div>
 
     <!-- Попап удаления карточки -->
-    <div class="popup popup_delete-card">
+    <div class="popup popup_confirmation">
       <div class="popup__container" id="popup__container">
-        <button class="popup__close-button" id="popup_delete-card_close-button" type="button" aria-label="Закрыть"></button>
+        <button class="popup__close-button" id="popup_confirmation_close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Вы уверены?</h3>
-        <button class="popup__submit-button" id="delete-card-button" type="submit" aria-label="Подтверждение удаления карточки">
-          Да
-        </button>
+        <form name="confirmationForm" class="popup__form" novalidate>
+          <button class="popup__submit-button" id="delete-card-button" type="submit" aria-label="Подтверждение удаления карточки">
+            Да
+          </button>
+        </form>
       </div>
     </div>
 

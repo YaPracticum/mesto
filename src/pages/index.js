@@ -5,6 +5,7 @@ import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
@@ -20,7 +21,8 @@ import {
   profileRole,
   popupWindowLargeImage,
   validationParameters,
-  profileAvatar
+  profileAvatar,
+  popupConfirmation
   } from '../utils/constants.js';
 
 const api = new Api ({
@@ -50,6 +52,37 @@ function handleCardClick(title, imagelink) {
 
 popupLargeImage.setEventListeners();
 
+
+
+
+const popupWithConfirmation = new PopupWithConfirmation(popupConfirmation, {
+  submit: (data) => {
+    api.deleteCard(data)
+    .then((res) => {
+      // userInfo.setUserInfo(res);
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupWithConfirmation.close();
+    })
+  }
+})
+
+function handleTrashCanClick(data) {
+  popupWithConfirmation.open(data);
+}
+
+popupWithConfirmation.setEventListeners();
+
+
+
+
+
+
+
 const cardsList = new Section({
   renderer: (data) => {
     const card = createCard(data);
@@ -61,7 +94,7 @@ const cardsList = new Section({
 
 const createCard = (data) => {
   const cardSelector = '.card-template';
-  const card = new Card(data, cardSelector, handleCardClick);
+  const card = new Card(data, cardSelector, handleCardClick, handleTrashCanClick);
   return card;
 }
 
