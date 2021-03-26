@@ -129,11 +129,6 @@ const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
 
 popupWithAddCardForm.setEventListeners();
 
-profileAddButton.addEventListener('click', () => {
-  popupWithAddCardForm.open();
-  addCardFormValidator.resetValidation();
-})
-
 const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
   submit: (data) => {
     api.setUserInfo(data)
@@ -157,6 +152,11 @@ profileEditButton.addEventListener('click', () => {
   inputRole.value = profileData.role;
   popupWithEditProfile.open();
   editProfileFormValidator.resetValidation();
+})
+
+profileAddButton.addEventListener('click', () => {
+  popupWithAddCardForm.open();
+  addCardFormValidator.resetValidation();
 })
 
 const addCardFormValidator = new FormValidator(validationParameters, '.addCardForm');
