@@ -25,7 +25,7 @@ import {
   popupConfirmation
   } from '../utils/constants.js';
 
-  let myUserId;
+let myUserId;
 
 const api = new Api ({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
@@ -37,9 +37,9 @@ const api = new Api ({
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cards, user]) => {
+    myUserId = user._id;
     userInfo.setUserInfo(user);
     cardsList.renderItems(cards);
-    myUserId = user._id;
   })
   .catch((err) => {
       console.log(`${err}`);
@@ -55,15 +55,11 @@ function handleCardClick(title, imagelink) {
 
 popupLargeImage.setEventListeners();
 
-
-
-
 const popupWithConfirmation = new PopupWithConfirmation(popupConfirmation, {
   submit: (data) => {
     api.deleteCard(data)
     .then((res) => {
-      // userInfo.setUserInfo(res);
-      console.log(res);
+      card.deleteCard(res);
     })
     .catch((err) => {
       console.log(err);
@@ -79,12 +75,6 @@ function handleTrashCanClick(data) {
 }
 
 popupWithConfirmation.setEventListeners();
-
-
-
-
-
-
 
 const cardsList = new Section({
   renderer: (data) => {

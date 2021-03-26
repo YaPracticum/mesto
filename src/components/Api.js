@@ -66,8 +66,8 @@ class Api {
     .catch(err => Promise.reject(err))
   }
 
-  deleteCard(data) {
-    return fetch(`${this.baseUrl}/cards/${data._id}`, {
+  deleteCard(card) {
+    return fetch(`${this.baseUrl}/cards/${card._id}`, {
       method: 'DELETE',
       headers: this.headers,
     })

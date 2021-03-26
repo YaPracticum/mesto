@@ -2,12 +2,12 @@ class Card {
   constructor(data, myUserId, cardSelector, handleCardClick, handleTrashCanClick) {
     this._data = data;
     this._myUserId = myUserId;
+    this._ownerId = data.owner._id;
     this._cardSelector = document.querySelector(cardSelector).content.querySelector('.card').cloneNode(true);
-    //this._trashButton = this._cardSelector.querySelector('.card__trash-button');
+    this._trashButton = this._cardSelector.querySelector('.card__trash-button');
     this._cardImage = this._cardSelector.querySelector('.card__image');
     this._cardLikeButton = this._cardSelector.querySelector('.card__like-button');
     this._cardLikeSelector = this._cardSelector.querySelector('.card__like-counter');
-    this._ownerId = data.owner._id;
     this._handleCardClick = handleCardClick;
     this._handleTrashCanClick = handleTrashCanClick;
   }
@@ -42,27 +42,15 @@ class Card {
 
   _checkUserId() {
     if (this._ownerId === this._myUserId) {
-      console.log(this._myUserId);
-      console.log(this._ownerId);
-      this._cardSelector.querySelector('.card__trash-button').classList.add('card__trash-button_active');
-      //this._trashButton.classList.add('card__trash-button_active');
-      // this._deleteElem(this._deleteButton);
+      this._trashButton.classList.add('card__trash-button_active');
     }
-    console.log(this._ownerId);
   }
 
-  // deleteCard() {
-  //   this._deleteElem(this._element);
-  // }
+  deleteCard() {
+    this._cardSelector.remove();
+    this._cardSelector = null;
+  }
 
-  // _deleteElem(elem) {
-  //   elem.remove();
-  //   elem = null;
-  // }
-
-  // _handleTrashCanClick() {
-  //   this._cardSelector.closest('.card').remove();
-  // }
 }
 
 export { Card }
