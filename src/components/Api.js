@@ -14,7 +14,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    });
   }
 
   setUserInfo(user) {
@@ -32,7 +34,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
 
   setUserAvatar(user) {
@@ -40,7 +44,7 @@ class Api {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-        avatar: user.avatar
+        avatar: user.avatarLink
       })
     })
     .then(res => {
@@ -49,7 +53,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
 
   getInitialCards() {
@@ -62,7 +68,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`);
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
 
   createNewCard(card) {
@@ -80,7 +88,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`)
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
 
   deleteCard(card) {
@@ -94,7 +104,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`)
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
 
   deleteLike(card) {
@@ -108,7 +120,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`)
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
 
   addLike(card) {
@@ -122,7 +136,9 @@ class Api {
       }
       return Promise.reject(`Ошибка: ${res.status}`)
     })
-    .catch(err => Promise.reject(err))
+    .catch((err) => {
+      console.log(err); 
+    })
   }
   
 }
