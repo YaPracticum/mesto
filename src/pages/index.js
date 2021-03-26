@@ -15,6 +15,7 @@ import {
   cardsContainer,
   profileEditButton,
   profileAddButton,
+  profileAvatarButton,
   inputName,
   inputRole,
   profileName,
@@ -22,7 +23,8 @@ import {
   popupWindowLargeImage,
   validationParameters,
   profileAvatar,
-  popupConfirmation
+  popupConfirmation,
+  popupEditAvatar
   } from '../utils/constants.js';
 
 let myCard;
@@ -56,8 +58,21 @@ function handleCardClick(title, imagelink) {
 
 popupLargeImage.setEventListeners();
 
+
+function renderLoading(isLoading) {
+  const elements = document.querySelectorAll('.popup__submit-button');
+  Array.from(elements).forEach((element) => {
+    if (isLoading) {
+      element.textContent = 'Сохранение...';
+    } else {
+      element.textContent = element.value;
+    }
+  })
+}
+
 const popupWithConfirmation = new PopupWithConfirmation(popupConfirmation, {
   submit: (data) => {
+    renderLoading(true);
     api.deleteCard(data)
     .then((res) => {
       myCard.deleteCard(res);
@@ -67,6 +82,7 @@ const popupWithConfirmation = new PopupWithConfirmation(popupConfirmation, {
     })
     .finally(() => {
       popupWithConfirmation.close();
+      renderLoading(false);
     })
   }
 })
@@ -112,6 +128,7 @@ const createCard = (data) => {
 
 const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
   submit: (data) => {
+    renderLoading(true);
     api.createNewCard(data)
     .then((data) => {
       const card = createCard(data);
@@ -123,6 +140,7 @@ const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
     })
     .finally(() => {
       popupWithAddCardForm.close();
+      renderLoading(false);
     })
   }
 })
@@ -131,6 +149,7 @@ popupWithAddCardForm.setEventListeners();
 
 const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
   submit: (data) => {
+    renderLoading(true);
     api.setUserInfo(data)
     .then((data) => {
       userInfo.setUserInfo(data);
@@ -140,11 +159,32 @@ const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
     })
     .finally(() => {
       popupWithEditProfile.close();
+      renderLoading(false);
     })
   }
 })
 
 popupWithEditProfile.setEventListeners();
+
+const popupWithEditAvatarForm = new PopupWithForm(popupEditAvatar, {
+  submit: (data) => {
+    renderLoading(true);
+    api.setUserAvatar(data)
+    .then((data) => {
+      userInfo.setUserAvatar(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupWithEditAvatarForm.close();
+      renderLoading(false);
+    })
+  }
+})
+
+popupWithEditAvatarForm.setEventListeners();
+
 
 profileEditButton.addEventListener('click', () => {
   const profileData = userInfo.getUserInfo();
@@ -159,8 +199,16 @@ profileAddButton.addEventListener('click', () => {
   addCardFormValidator.resetValidation();
 })
 
+profileAvatarButton.addEventListener('click', () => {
+  popupWithEditAvatarForm.open();
+  popupWithEditAvatarFormValidator.resetValidation();
+})
+
 const addCardFormValidator = new FormValidator(validationParameters, '.addCardForm');
 addCardFormValidator.enableValidation(); 
 
 const editProfileFormValidator = new FormValidator(validationParameters, '.profileForm');
 editProfileFormValidator.enableValidation(); 
+
+const popupWithEditAvatarFormValidator = new FormValidator(validationParameters, '.avatarForm');
+popupWithEditAvatarFormValidator.enableValidation(); 
