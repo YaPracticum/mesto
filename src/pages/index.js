@@ -88,6 +88,24 @@ const createCard = (data) => {
       myCard = card;
       popupWithConfirmation.open(data);
     },
+    addLike: (data) => {
+      api.addLike(data)
+        .then((data) => {
+          card.likeCounter(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    },
+    deleteLike: (data) => {
+      api.deleteLike(data)
+        .then((data) => {
+          card.likeCounter(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    },
   });
   return card;
 }
@@ -95,8 +113,8 @@ const createCard = (data) => {
 const popupWithAddCardForm = new PopupWithForm(popupAddCard, {
   submit: (data) => {
     api.createNewCard(data)
-    .then((res) => {
-      const card = createCard(res);
+    .then((data) => {
+      const card = createCard(data);
       const cardElement = card.generateCard();
       cardsList.addItem(cardElement, 'prepend');
     })
@@ -119,8 +137,8 @@ profileAddButton.addEventListener('click', () => {
 const popupWithEditProfile = new PopupWithForm(popupEditProfile, {
   submit: (data) => {
     api.setUserInfo(data)
-    .then((res) => {
-      userInfo.setUserInfo(res);
+    .then((data) => {
+      userInfo.setUserInfo(data);
     })
     .catch((err) => {
       console.log(err);

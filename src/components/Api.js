@@ -79,6 +79,34 @@ class Api {
     })
     .catch(err => Promise.reject(err))
   }
+
+  deleteLike(card) {
+    return fetch(`${this.baseUrl}/cards/likes/${card._id}`, {
+      method: 'DELETE',
+      headers: this.headers,
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+    })
+    .catch(err => Promise.reject(err))
+  }
+
+  addLike(card) {
+    return fetch(`${this.baseUrl}/cards/likes/${card._id}`, {
+      method: 'PUT',
+      headers: this.headers,
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      }
+      return Promise.reject(`Ошибка: ${res.status}`)
+    })
+    .catch(err => Promise.reject(err))
+  }
   
 }
 
