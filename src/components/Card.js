@@ -1,5 +1,5 @@
 class Card {
-  constructor(data, myUserId, cardSelector, handleCardClick, handleTrashCanClick) {
+  constructor(data, myUserId, cardSelector, handleCardClick, { handleTrashCanClick }) {
     this._data = data;
     this._myUserId = myUserId;
     this._ownerId = data.owner._id;

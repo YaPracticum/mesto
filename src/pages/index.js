@@ -25,6 +25,7 @@ import {
   popupConfirmation
   } from '../utils/constants.js';
 
+let myCard;
 let myUserId;
 
 const api = new Api ({
@@ -59,20 +60,17 @@ const popupWithConfirmation = new PopupWithConfirmation(popupConfirmation, {
   submit: (data) => {
     api.deleteCard(data)
     .then((res) => {
-      card.deleteCard(res);
+      myCard.deleteCard(res);
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
+      myCard = null;
       popupWithConfirmation.close();
     })
   }
 })
-
-function handleTrashCanClick(data) {
-  popupWithConfirmation.open(data);
-}
 
 popupWithConfirmation.setEventListeners();
 
@@ -81,13 +79,17 @@ const cardsList = new Section({
     const card = createCard(data);
     const cardElement = card.generateCard();
     cardsList.addItem(cardElement);
-    //card.likeCounter(data);
   }
 }, cardsContainer);
 
 const createCard = (data) => {
   const cardSelector = '.card-template';
-  const card = new Card(data, myUserId, cardSelector, handleCardClick, handleTrashCanClick);
+  const card = new Card(data, myUserId, cardSelector, handleCardClick, {
+    handleTrashCanClick: () => {
+      myCard = card;
+      popupWithConfirmation.open(data);
+    },
+  });
   return card;
 }
 
