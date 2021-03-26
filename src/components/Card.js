@@ -48,7 +48,7 @@ class Card {
 
   deleteCard() {
     this._cardSelector.remove();
-    this._cardSelector = null;
+    // this._cardSelector = null;
   }
 
 }

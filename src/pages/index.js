@@ -66,7 +66,6 @@ const popupWithConfirmation = new PopupWithConfirmation(popupConfirmation, {
       console.log(err);
     })
     .finally(() => {
-      myCard = null;
       popupWithConfirmation.close();
     })
   }
