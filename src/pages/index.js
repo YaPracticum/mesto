@@ -31,9 +31,9 @@ let myCard;
 let myUserId;
 
 const api = new Api ({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-24',
   headers: {
-    authorization: 'ecbf5b4d-1113-4e35-a3c6-5109ec97ddb7',
+    authorization: '97068222-e463-4c4e-8f6b-5881b2ebfd04',
     'Content-Type': 'application/json'
   }
 });
